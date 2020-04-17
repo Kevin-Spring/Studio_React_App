@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Card from "./Card";
+import Footer from "./Footer";
 import faker from "faker";
 
 const App = ()=>{
@@ -10,6 +11,7 @@ const App = ()=>{
         <Card img={faker.image.cats()}/>
         <Card img={faker.image.animals()}/>
         <Card img={faker.image.fashion()}/>
+        <Footer year={Date()}/>
         </div>
     )
 }
