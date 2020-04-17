@@ -1,14 +1,15 @@
 import React from "react";
-//import nav comp
+import Navbar from "./Navbar";
 import Card from "./Card";
 import faker from "faker";
 
 const App = ()=>{
     return (
         <div>
-        <nav>Navbar hamnar här</nav>
+        <Navbar/>
         <Card img={faker.image.cats()}/>
         <Card img={faker.image.animals()}/>
+        <Card img={faker.image.fashion()}/>
         </div>
     )
 }
