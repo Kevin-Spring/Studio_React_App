@@ -13,11 +13,11 @@ const Navbar = () => {
                     <li className={"nav-item active"}>
                         <a href={".."} className={"nav-link"}>Studios <span className={"sr-only"}>(current)</span></a>
                     </li>
-                    <li className={"nav-item"}>
-                        <a href={".."} className={"nav-link"}>Bookings</a>
-                    </li>
                 </ul>
                 <ul className={"navbar-nav ml-auto"}>
+                <li className={"nav-item"}>
+                        <a href={".."} className={"nav-link"}>Bookings</a>
+                    </li>
                     <li className={"nav-item"}>
                         <a href={".."} className={"nav-link"}>Log in / Log out</a>
                     </li>
