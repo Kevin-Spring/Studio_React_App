@@ -7,6 +7,7 @@ import Card from "./Card";
 import HandleBooking from "./HandleBookings";
 import Booking from "./Booking";
 import Footer from "./Footer";
+import Login from "./Login";
 
 
 
@@ -21,6 +22,7 @@ const AppRouter = () => {
             <Route path="/card" component={Card} exact></Route>
             <Route path="/handle-bookings" component={HandleBooking} exact></Route>
             <Route path="/bookings" component={Booking} exact></Route>
+            <Route path="/login" component={Login} exact></Route>
 
         
         </BrowserRouter>
