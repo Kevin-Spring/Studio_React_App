@@ -1,25 +1,26 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const Navbar = () => {
 
     return (
         <nav className={"navbar navbar-expand-lg navbar-light bg-light"}>
-            <a href={".."} className={"navbar-brand"}>Spring Studio</a>
+            <Link to={"/"} className={"navbar-brand"}>Spring Studio</Link>
             <button className={"navbar-toggler"} type={"button"} data-toggle={"collapse"} data-target={"#navbarNav"} aria-controls={"navbarNav"} aria-expanded={"false"} aria-label={"Toggle navigation"}>
                 <span className={"navbar-toggler-icon"}></span>
             </button>
             <div className={"collapse navbar-collapse"} id={"navbarNav"}>
                 <ul className={"navbar-nav"}>
                     <li className={"nav-item active"}>
-                        <a href={".."} className={"nav-link"}>Studios <span className={"sr-only"}>(current)</span></a>
+                        <Link to={"/card"} className={"nav-link"}>Studios <span className={"sr-only"}>(current)</span></Link>
                     </li>
                 </ul>
                 <ul className={"navbar-nav ml-auto"}>
                 <li className={"nav-item"}>
-                        <a href={".."} className={"nav-link"}>Bookings</a>
+                        <Link to={"/bookings"} className={"nav-link"}>Bookings</Link>
                     </li>
                     <li className={"nav-item"}>
-                        <a href={".."} className={"nav-link"}>Log in / Log out</a>
+                        <Link to={"/login"} className={"nav-link"}>Log in / Log out</Link>
                     </li>
                 </ul>
             </div>

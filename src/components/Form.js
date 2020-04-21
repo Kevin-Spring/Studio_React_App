@@ -1,11 +1,11 @@
-import React , {Component} from "react";
+import React, { Component } from "react";
 
-class Form extends Component{
+class Form extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
-        this.state = { 
+        this.state = {
 
             name: undefined,
             bookedTime: undefined,
@@ -15,35 +15,35 @@ class Form extends Component{
 
     handleOnChangeName = (e) => {
 
-        this.setState({name: e.target.value})
+        this.setState({ name: e.target.value })
         localStorage.setItem("Name", e.target.value);
-        
+
     }
     handleOnChangeTime = (e) => {
 
-        this.setState({bookedTime: e.target.value})
+        this.setState({ bookedTime: e.target.value })
         localStorage.setItem("BookedTime", e.target.value);
-        
+
     }
     handleOnChangeMobile = (e) => {
 
-        this.setState({phoneNr: e.target.value})
+        this.setState({ phoneNr: e.target.value })
         localStorage.setItem("PhoneNr", e.target.value);
     }
 
 
-    handleOnSubmit(e){
+    handleOnSubmit(e) {
         e.preventDefault();
-        
+
     }
 
     render() {
         return (
             <div>
                 <form onSubmit={this.handleOnSubmit}>
-                    <input type={"text"} placeholder={"Name"} onChange = {this.handleOnChangeName}></input>
-                    <input type={"text"} placeholder={"Pick a day!"} onChange = {this.handleOnChangeTime}></input>
-                    <input type={"number"} placeholder={"Telephone"} onChange = {this.handleOnChangeMobile}></input>
+                    <input type={"text"} placeholder={"Name"} onChange={this.handleOnChangeName}></input>
+                    <input type={"text"} placeholder={"Pick a day!"} onChange={this.handleOnChangeTime}></input>
+                    <input type={"number"} placeholder={"Telephone"} onChange={this.handleOnChangeMobile}></input>
                     <button type={"submit"} >Book studio</button>
                 </form>
 
