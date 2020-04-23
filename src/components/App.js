@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "./Navbar";
 //import Form from "./Form";
 import Footer from "./Footer";
-import faker from "faker";
 import LandingPage from "./LandingPage";
 
 const App = ()=>{
