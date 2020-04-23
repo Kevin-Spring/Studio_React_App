@@ -9,9 +9,7 @@ const App = ()=>{
     return (
         <div>
             <Navbar />
-            <LandingPage img={faker.image.cats()}/>
-            <LandingPage img={faker.image.animals()}/>
-            <LandingPage img={faker.image.fashion()}/>
+            <LandingPage />
             <Footer year={Date()}/>
         </div>
     )
