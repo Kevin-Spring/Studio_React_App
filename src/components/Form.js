@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
+import "../style/_Form.scss";
 
 class Form extends Component {
 
@@ -40,17 +42,43 @@ class Form extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleOnSubmit}>
-                    <input type={"text"} placeholder={"Name"} onChange={this.handleOnChangeName}></input>
-                    <input type={"text"} placeholder={"Pick a day!"} onChange={this.handleOnChangeTime}></input>
-                    <input type={"number"} placeholder={"Telephone"} onChange={this.handleOnChangeMobile}></input>
-                    <button type={"submit"} >Book studio</button>
+
+                <section className={"contact"}>
+                <h2 class="contact__header">get in touch!</h2>
+       
+                <form onSubmit={this.handleOnSubmit} method="post" enctype="text/plain">
+                    <div className={"form__container"}>
+                        <div className={"form__group field"}>
+                            <input type={"text"} className={"form__field"} placeholder={"Name"} name={"name"} id={'name'} onChange={this.handleOnChangeName} required />
+                            <label for={"name"} className={"form__label"}>Name</label>
+                        </div>
+                        <div className={"form__group field"}>
+                            <input type={"text"} className={"form__field"} name={"time"} id={"input__time"} placeholder={"Time"}
+                            onChange={this.handleOnChangeTime} required />
+                            <label for={"input__time"} className={"form__label"}>What Time?</label>
+                        </div>
+                        <div className={"form__group field"}>
+                            <input type="number" className={"form__field"} name={"telephone"} id={"input__telephone"} placeholder={"Telephone"}
+                            onChange={this.handleOnChangeMobile} required />
+                            <label for={"input__telephone"} className={"form__label"}>Telephone</label>
+                        </div>
+                        <div className={"form__group field"}>
+                            <textarea name={"textarea"} className={"form__field"} id={"textarea"} cols={"30"} rows={"10"}
+                                placeholder={"Other thoughts?"}></textarea>
+                            <label for={"textarea"} className={"form__label"}>Anything else?</label>
+                        </div>
+                        <div className={"btn-animation"}>
+                            <button type={"submit"} className={"form-btn"}><Link to={"/bookings"} className={"form__btn-underline"}> SEND!</Link></button>
+                        </div>
+                    </div>
                 </form>
 
                 <div>{this.state.name}</div>
                 <div>{this.state.bookedTime}</div>
                 <div>{this.state.phoneNr}</div>
+                </section>
             </div>
+            
         )
     }
 

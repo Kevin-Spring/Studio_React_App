@@ -1,0 +1,129 @@
+.contact{
+    background: var(--darkgrey);
+}
+
+.contact__header{
+    font-weight: 800;
+    font-size: 8rem;
+    text-align: center;
+    color: var(--lightgrey);
+    padding-top: 5rem;
+    text-transform: uppercase;
+    padding-top: 20vh;
+
+}
+
+.form__container{
+    padding: 5rem;
+
+    .form__group {
+
+        position: relative;
+        left: 25%;
+        padding: 1rem;
+        width: 50%;
+      }
+      
+      .form__field {
+        width: 100%;
+        border: 0;
+        border-bottom: 2px solid var(--lightgrey);
+        outline: 0;
+        font-size: 1.3rem;
+
+        color: white;
+        padding: 7px 0;
+        background: transparent;
+        transition: border-color 0.2s;
+      
+        &::placeholder {
+          color: transparent;
+        }
+      
+        &:placeholder-shown ~ .form__label {
+          font-size: 2rem;
+          cursor: text;
+          top: 20px;
+        }
+      }
+      
+      .form__label {
+        position: absolute;
+        top: -1rem;
+        display: block;
+        transition: 0.2s;
+        font-size: 1.8rem;
+        color: var(--lightgrey);
+      }
+      
+      .form__field:focus {
+        ~ .form__label {
+          position: absolute;
+          top: -.5rem;
+          display: block;
+          transition: 0.2s;
+          font-size: 1rem;
+          color: white;
+          font-weight:700;    
+        }
+        padding-bottom: 6px;
+        border-bottom: 2px solid white;
+        font-weight: 700;
+        border-width: 3px;
+        border-image: linear-gradient(to right, white,var(--lightgrey));
+        border-image-slice: 1;
+      }
+}
+
+.form-btn{
+    font-size: xx-large;
+    color: var(--lightgrey);
+    background: transparent;
+    border: none;
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+    margin-top: 3rem;
+    border: 1px solid var(--lightgrey);
+    padding: 1rem;
+
+    &:hover{
+      border: 1px solid white;
+      color: white;
+      cursor: pointer;
+      transition: .1s ease-in-out;
+      box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) ;
+    }
+    &:active{
+      transform: translateX(-50%) translateY(.1rem);
+        /* background: white; */
+        color: var(--lightgrey);
+    }
+
+    .form__btn-underline {
+        display: inline;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        color: var(--lighgrey);
+    
+        &:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            width: 0;
+            bottom: -5px;
+            background: white;
+            height: 4px;
+            transition: width 0.3s ease-out;
+          }
+          &:hover:after,
+          &:focus:after,
+          &:active:after {
+            left: 0;
+            right: auto;
+            width: 100%;
+            color: white;
+          }
+      }
+    }

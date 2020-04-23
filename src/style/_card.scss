@@ -1,3 +1,108 @@
-.card {
-    display: inline-block;
+.card-page{
+    background: var(--darkgrey);
+    height: 94vh;
 }
+
+.card {
+    margin-top: 20rem;
+    width: 20rem;
+    background-color: var(--black);
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    box-sizing: border-box;
+    border-radius: 0.25rem;
+    justify-self: center;
+    margin-bottom: 0.75rem;
+    display: inline-block;
+    margin-left: 5vw;
+    transition: .3s ease;
+  }
+  
+  @mixin card-img-top {
+    display: inline-block;
+    max-width: 100%;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+  }
+  .card-img-top-1{
+      @include card-img-top;
+      background: url(../img/photo-studio-with-white-wooden-framed-wall-mirror-134469.jpg);
+      background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+  }
+  .card-img-top-2{
+    @include card-img-top;
+    background: url(../img/pink-photo-booth-3673755.jpg);
+    background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+}
+.card-img-top-3{
+    @include card-img-top;
+    background: url(../img/studio-setting-2388569.jpg);
+    background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+}
+
+  
+  .card__body {
+    padding: 1.25rem;
+  }
+  
+  .card__title {
+    font-weight: 100;
+    margin-bottom: 0.75rem;
+  }
+  
+  .card__text {
+    margin-bottom: 1rem;
+  }
+  
+  .card__button {
+    position: relative;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    text-transform: uppercase;
+    border: 1px solid var(--lightgrey);
+    padding: .5rem;
+    border-radius: 0.25rem;
+  }
+
+  .card__button:hover{
+      background: var(--darkgrey);
+  }
+
+  .card__price{
+      position: relative;
+      padding-left: 10rem;
+  }
+
+  .card__cancel{
+    position: relative;
+    transform: translateX(100%);
+    font-size: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    text-transform: uppercase;
+    border: 1px solid var(--lightgrey);
+    padding: .5rem;
+    border-radius: 0.25rem;
+    background: rgba(255, 96, 96, 0.384);
+    transition: .3s ease;
+  }
+
+  .card__cancel:hover{
+    background: red;
+  }
+
+  .card:hover{
+      transform: scale(1.1);
+  }
+  

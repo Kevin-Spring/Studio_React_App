@@ -6,7 +6,7 @@ import "../style/_landingPage.scss";
 
 
 
-const LandingPage = (props) => {
+const LandingPage = () => {
     return(
         <div>
     <header className={"header"}>

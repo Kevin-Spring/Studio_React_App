@@ -1,6 +1,7 @@
 .navbar{
     background: var(--darkgrey);
     box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 100;
 }
 .spring-logo{
     position: relative;
@@ -13,7 +14,7 @@
     top: -6vh;
     margin-left: 3vw;
     margin-right: 3vw;
-    transition: .6s ease;
+    transition: .3s ease;
 }
 
 .spring-logo:hover{
