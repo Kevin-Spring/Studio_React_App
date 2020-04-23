@@ -14,7 +14,11 @@ const Booking = () => {
 
 
             <section className={"bookings"}>
+
+            <h2 className={"bookings__header"}>Your bookings!</h2>
             
+            <div className={"bookings__wrapper"}>
+
             <div className={"card"}>
             <div className={"card-img-top-1"} alt={"cat"}></div>
                 <div className={"card__body"}>
@@ -23,6 +27,7 @@ const Booking = () => {
                     <Link to={"/handle-bookings"} className={"card__button"}>Boka om</Link>
                     <button className={"card__cancel"}>Avboka</button>
                 </div>
+            </div>
             </div>
             
             </section>

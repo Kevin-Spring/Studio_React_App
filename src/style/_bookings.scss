@@ -1,4 +1,18 @@
 .bookings{
-    height: 100vh;
     background: var(--darkgrey);
+}
+
+.bookings__header{
+    font-weight: 800;
+    font-size: 8rem;
+    text-align: center;
+    color: var(--lightgrey);
+    padding-top: 5rem;
+    text-transform: uppercase;
+    margin-top: 10vh;
+
+}
+.bookings__wrapper{
+    margin-top: -25vh;
+    padding: 5rem;
 }

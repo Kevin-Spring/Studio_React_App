@@ -44,7 +44,7 @@ class Form extends Component {
             <div>
 
                 <section className={"contact"}>
-                <h2 class="contact__header">get in touch!</h2>
+                <h2 className={"contact__header"}>get in touch!</h2>
        
                 <form onSubmit={this.handleOnSubmit} method="post" enctype="text/plain">
                     <div className={"form__container"}>

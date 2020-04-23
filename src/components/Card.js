@@ -10,7 +10,11 @@ const Card = () => {
     return(
         <div>
             <Navbar />
+            <h2 className={"studios__header"}>Studios</h2>
             <section className={"card-page"}>
+
+            <div className={"cards__wrapper"}>
+
             <div className={"card"}>
             <div className={"card-img-top-1"} alt={"cat"}></div>
                 <div className={"card__body"}>
@@ -37,6 +41,7 @@ const Card = () => {
                     <Link to={"/handle-bookings"} className={"card__button"}>Boka</Link>
                     <span className={"card__price"}>10.000kr</span>
                 </div>
+        </div>
         </div>
         </section>
         <Footer />

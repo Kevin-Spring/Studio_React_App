@@ -3,6 +3,21 @@
     height: 94vh;
 }
 
+.studios__header{
+  font-weight: 800;
+    font-size: 8rem;
+    text-align: center;
+    color: var(--lightgrey);
+    padding-top: 5rem;
+    text-transform: uppercase;
+    margin-top: 10vh;
+}
+
+.cards__wrapper{
+  margin-top: -25vh;
+    padding: 5rem;
+}
+
 .card {
     margin-top: 20rem;
     width: 20rem;
@@ -16,6 +31,7 @@
     display: inline-block;
     margin-left: 5vw;
     transition: .3s ease;
+    box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   
   @mixin card-img-top {
