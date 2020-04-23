@@ -7,3 +7,145 @@
 .landingPage-background{
     z-index:-100;
 }
+
+/* ------ Hero ------ */
+
+.header__wrapper__hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    background: url("../img/photo-studio-with-white-wooden-framed-wall-mirror-134469.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: end;
+    height: 60rem;
+    max-width: 100%;
+    min-height: 100%;
+}
+
+.hero__grid-item {
+    color: var(--white);
+    width: 20%;
+    height: 10%;
+    margin-left: 10rem;
+}
+
+.header__wrapper__hero-text {
+    text-transform: uppercase;
+    font-weight: var(--fontSuperLight);
+    margin-top: 20rem;
+    color: var(--lightgrey);
+    font-size: 1rem;
+}
+
+.header__wrapper__hero-header {
+    font-size: 5rem;
+    margin-bottom: 42rem;
+}
+
+.header__wrapper__hero-link {
+    text-transform: uppercase;
+    bottom: 38rem;
+    text-decoration: none;
+    position: relative;
+    font-size: 1.2rem;
+    width: 6rem;
+}
+
+
+
+
+
+#species {
+    background: var(--darkgrey);
+    box-shadow: inset 0px 10px 15px -6px rgba(0,0,0,0.64);
+}
+
+.species__grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    color: var(--white);
+    margin-left: 5rem;
+    margin-right: 5rem;
+}
+
+.species__grid-item {
+    border-radius: .5rem;
+    margin-top: 8rem;
+    padding: 5rem;
+}
+
+.species__grid-item-header {
+    font-size: 2rem;
+    font-weight: var(--fontHeavy);
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+.hr {
+    border: 1px solid var(--orange);
+    width: 5rem;
+}
+
+.species__grid-item-intro {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+    font-weight: var(--fontLight);
+    color: var(--lightgrey);
+    line-height: 150%;
+}
+
+.species__grid-item-text {
+    color: var(--lightgrey);
+    letter-spacing: 1px;
+    line-height: 200%;
+    font-weight: var(--fontLight);
+}
+
+.species__grid-img {
+    border-radius: .5rem;
+    background: url("../img/photo-studio-with-white-wooden-framed-wall-mirror-134469.jpg");
+    height: 40rem;
+    width: 40rem;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.species__grid-img:hover {
+    transition: 0.5s ease-in-out;
+    transform: scale(1.01);
+}
+
+.landingPage__bookStudio{
+    text-transform: uppercase;
+    margin-top: 5vh;
+    text-decoration: none;
+    position: relative;
+    font-size: 1.2rem;
+    width: 6rem;
+    color: white;
+}
+
+.landingPage__bookStudio-link{
+    text-decoration: none;
+}
+
+
+/* ----- ANIMATIONS ----- */
+
+.fadeIn {
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

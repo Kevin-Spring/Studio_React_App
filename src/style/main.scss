@@ -1,0 +1,31 @@
+/* ---- Setting up variables ----- */
+
+:root {
+    /* Color setup */
+    --white: #fff;
+    --lightgrey: #A4A4A4;
+    --darkgrey: #1D1D1B;
+    --sidebardarkgrey: rgb(14, 14, 12);
+    --orange: #F5A623;
+    --black: #000;
+    /* Font weights */
+    --fontSuperLight: 300;
+    --fontLight: 400;
+    --fontMedium: 700;
+    --fontHeavy: 900;
+}
+
+/* ------ Removing browser default settings ------- */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
+}

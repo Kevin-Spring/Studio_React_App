@@ -1,0 +1,84 @@
+.navbar{
+    background: var(--darkgrey);
+    box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.spring-logo{
+    position: relative;
+    background-image: url(../img/logo-1.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-width: 100%;
+    height: 10vh;
+    width: 10vw;
+    top: -6vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    transition: .6s ease;
+}
+
+.spring-logo:hover{
+    transform: scale(1.05);
+}
+.navbar__items-left-wrapper{
+    display: inline-flex;
+    justify-content: flex-start;
+}
+
+.navbar__items-right-wrapper{
+    position: absolute;
+    display: inline-flex;
+    justify-content: flex-end;
+    width: 70%;
+}
+
+.nav-item{
+    list-style: none;
+    position: relative;
+    top: 4rem;
+}
+.nav-link{
+    text-decoration: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    font-weight: var(--fontSuperLight);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: var(--lightgrey);
+}
+
+.nav-link:hover{
+    color: black;
+}
+
+.underline {
+    text-decoration: none;
+    color: var(--lightgrey);
+    position: relative;
+}
+
+.underline:hover {
+    color: var(--white);
+}
+
+.underline:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 0;
+    bottom: -10px;
+    background: var(--orange);
+    height: 4px;
+    transition: width 0.3s ease-out;
+}
+
+.underline:hover:after, .underline:focus:after, .underline:active:after {
+    left: 0;
+    right: auto;
+    width: 100%;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
