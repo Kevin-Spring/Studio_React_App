@@ -1,4 +1,6 @@
 import React from "react";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 
 
@@ -6,7 +8,11 @@ const Login = () => {
 
     return(
         <div>
-            Logga in här!!
+        <Navbar />
+
+        Logga in här!!
+           <Footer />
+            
         </div>
     )
 }
