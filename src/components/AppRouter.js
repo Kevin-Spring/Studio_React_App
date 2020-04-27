@@ -2,7 +2,7 @@ import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import App from "./App";
-import Card from "./Card";
+import Studios from "./Studios";
 import HandleBooking from "./HandleBookings";
 import Booking from "./Booking";
 import Login from "./Login";
@@ -18,7 +18,7 @@ const AppRouter = () => {
 
             <Switch>
             <Route path="/" component={App} exact></Route>
-            <Route path="/card" component={Card} exact></Route>
+            <Route path="/studios" component={Studios} exact></Route>
             <Route path="/handle-bookings" component={HandleBooking} exact></Route>
             <Route path="/bookings" component={Booking} exact></Route>
             <Route path="/login" component={Login} exact></Route>

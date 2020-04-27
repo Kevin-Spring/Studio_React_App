@@ -13,7 +13,7 @@ const Navbar = () => {
                         <Link to={"/"} className={"nav-link"}><div className={"spring-logo"}></div></Link>
                     </li>
                     <li className={"nav-item"}>
-                        <Link to={"/card"} className={"nav-link underline"}>Studios</Link>
+                        <Link to={"/studios"} className={"nav-link underline"}>Studios</Link>
                     </li>
                 </ul>
 

@@ -1,17 +1,3 @@
-.card-page{
-    background: var(--darkgrey);
-    height: 94vh;
-}
-
-.studios__header{
-  font-weight: 800;
-    font-size: 8rem;
-    text-align: center;
-    color: var(--lightgrey);
-    padding-top: 5rem;
-    text-transform: uppercase;
-    margin-top: 10vh;
-}
 
 .cards__wrapper{
   margin-top: -25vh;
@@ -34,35 +20,12 @@
     box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   
-  @mixin card-img-top {
-    display: inline-block;
+  .card-img-top {
     max-width: 100%;
+    height: auto;
     width: 20rem;
-    height: 20rem;
     border-radius: 0.25rem 0.25rem 0 0;
   }
-  .card-img-top-1{
-      @include card-img-top;
-      background: url(../img/photo-studio-with-white-wooden-framed-wall-mirror-134469.jpg);
-      background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-  }
-  .card-img-top-2{
-    @include card-img-top;
-    background: url(../img/pink-photo-booth-3673755.jpg);
-    background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-}
-.card-img-top-3{
-    @include card-img-top;
-    background: url(../img/studio-setting-2388569.jpg);
-    background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-}
-
   
   .card__body {
     padding: 1.25rem;
