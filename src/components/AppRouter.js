@@ -2,11 +2,9 @@ import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import App from "./App";
-//import Navbar from "./Navbar";
 import Card from "./Card";
 import HandleBooking from "./HandleBookings";
 import Booking from "./Booking";
-//import Footer from "./Footer";
 import Login from "./Login";
 import NotFoundPage from "./NotFoundPage";
 

@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 
 
-const Card = () => {
+const Card = (props) => {
     return(
         <div>
             <Navbar />
@@ -16,30 +16,13 @@ const Card = () => {
             <div className={"cards__wrapper"}>
 
             <div className={"card"}>
+            <img src={props.image} alt="studio 1"/>
             <div className={"card-img-top-1"} alt={"cat"}></div>
                 <div className={"card__body"}>
-                    <h5 className={"card__title"}>Studio 1</h5>
-                    <p className={"card__text"}>Some quick example text to build on the Studio 1 and make up the bulk of the card's content.</p>
+                    <h5 className={"card__title"}>{props.title}</h5>
+                    <p className={"card__text"}>{props.description}</p>
                     <Link to={"/handle-bookings"} className={"card__button"}>Boka</Link>
-                    <span className={"card__price"}>10.000kr</span>
-                </div>
-        </div>
-        <div className={"card"}>
-            <div className={"card-img-top-2"} alt={"cat"}></div>
-                <div className={"card__body"}>
-                    <h5 className={"card__title"}>Studio 2</h5>
-                    <p className={"card__text"}>Some quick example text to build on the Studio 2 and make up the bulk of the card's content.</p>
-                    <Link to={"/handle-bookings"} className={"card__button"}>Boka</Link>
-                    <span className={"card__price"}>10.000kr</span>
-                </div>
-        </div>
-        <div className={"card"}>
-            <div className={"card-img-top-3"} alt={"cat"}></div>
-                <div className={"card__body"}>
-                    <h5 className={"card__title"}>Studio 3</h5>
-                    <p className={"card__text"}>Some quick example text to build on the Studio 3 and make up the bulk of the card's content.</p>
-                    <Link to={"/handle-bookings"} className={"card__button"}>Boka</Link>
-                    <span className={"card__price"}>10.000kr</span>
+                    <span className={"card__price"}>{props.price}</span>
                 </div>
         </div>
         </div>
