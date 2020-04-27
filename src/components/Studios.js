@@ -33,6 +33,10 @@ class Studios extends Component{
                 <section className={"card-page"}>
                 <h2 className={"studios__header"}>Studios</h2>
 
+                <div className="grid__wrapper-cards">
+
+                
+                
                 {this.state.products.map( (product) => (
                     
                     <Card key={product.id}
@@ -45,6 +49,11 @@ class Studios extends Component{
                     )
 
                 )}
+
+
+                </div>
+                
+               
                 
                 <button onClick={this.onClickApi.bind(this)} className={"get__studios"}>Get Studios!</button>
                 </section>

@@ -1,7 +1,6 @@
 
 .cards__wrapper{
   margin-top: -25vh;
-    padding: 5rem;
 }
 
 .card {
@@ -21,9 +20,11 @@
   }
   
   .card-img-top {
+    display: block;
+    object-fit: cover;
     max-width: 100%;
-    height: auto;
     width: 20rem;
+    height: 200px;
     border-radius: 0.25rem 0.25rem 0 0;
   }
   
