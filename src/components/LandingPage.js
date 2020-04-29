@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "../style/_card.scss";
 import "../style/_landingPage.scss";
 
 
