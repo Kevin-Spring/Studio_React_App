@@ -7,7 +7,6 @@ import HandleBooking from "./HandleBookings";
 import Booking from "./Booking";
 import Login from "./Login";
 import AdminForm from "./AdminForm";
-import FileUpload from "./FileUpload";
 import NotFoundPage from "./NotFoundPage";
 
 
@@ -25,7 +24,6 @@ const AppRouter = () => {
             <Route path="/bookings" component={Booking} exact></Route>
             <Route path="/login" component={Login} exact></Route>
             <Route path="/admin" exact component={AdminForm} />
-            <Route path="/fileupload" exact component= {FileUpload} />
             <Route component={NotFoundPage}></Route>
             </Switch>
 
