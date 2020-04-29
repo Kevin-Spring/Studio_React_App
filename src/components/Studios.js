@@ -13,8 +13,8 @@ class Studios extends Component{
         products: []
     }
 
-    onClickApi(){
-        axios
+    async componentDidMount(){
+        await axios
         .get("http://localhost:1337/products")
         .then((res)=>{
             console.log(res)
@@ -53,9 +53,6 @@ class Studios extends Component{
 
                 </div>
                 
-               
-                
-                <button onClick={this.onClickApi.bind(this)} className={"get__studios"}>Get Studios!</button>
                 </section>
                 <Footer year={Date()}/>
             </div>
