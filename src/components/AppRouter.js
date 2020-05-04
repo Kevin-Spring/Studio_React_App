@@ -8,6 +8,7 @@ import Booking from "./Booking";
 import Login from "./Login";
 import AdminForm from "./AdminForm";
 import NotFoundPage from "./NotFoundPage";
+import AdminLogin from "./Auth/AdminLogin";
 
 
 
@@ -18,13 +19,14 @@ const AppRouter = () => {
         <BrowserRouter>
 
             <Switch>
-            <Route path="/" component={App} exact></Route>
-            <Route path="/studios" component={Studios} exact></Route>
-            <Route path="/handle-bookings" component={HandleBooking} exact></Route>
-            <Route path="/bookings" component={Booking} exact></Route>
-            <Route path="/login" component={Login} exact></Route>
+            <Route path="/" component={App} exact />
+            <Route path="/studios" component={Studios} exact />
+            <Route path="/handle-bookings" component={HandleBooking} exact />
+            <Route path="/bookings" component={Booking} exact />
+            <Route path="/login" component={Login} exact />
             <Route path="/admin" exact component={AdminForm} />
-            <Route component={NotFoundPage}></Route>
+            <Route path="/adminLogin" exact component={AdminLogin} />
+            <Route component={NotFoundPage} />
             </Switch>
 
         

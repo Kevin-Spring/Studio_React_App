@@ -6,7 +6,7 @@ class AdminForm extends Component{
 
     state= {
 
-        title: " ",
+        //title: " ",
         image: " "
         
     }
@@ -20,23 +20,27 @@ class AdminForm extends Component{
         e.preventDefault();
 
         
-        this.setState({title: e.target.elements.title.value});
+        //this.setState({title: e.target.elements.title.value});
 
         const res = await axios.post("http://localhost:1337/products", {
             title: e.target.elements.title.value,
             description: e.target.elements.description.value,
             price: e.target.elements.price.value,
-            image: undefined
+            
         })
+        console.log(res);
         
         /* För att lägga till bild i strapi */
         const data = new FormData();
         data.append("files", this.state.image);
+        data.append("ref", "products");
+        data.append("refId", res.data.id);
+        data.append("field", "image");
 
         const img = await axios.post("http://localhost:1337/upload", data)  
        
         console.log(img);
-        console.log(res);
+       
         
 
     }
