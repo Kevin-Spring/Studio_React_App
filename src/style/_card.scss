@@ -52,6 +52,7 @@
     border: 1px solid var(--lightgrey);
     padding: .5rem;
     border-radius: 0.25rem;
+    text-decoration: none;
   }
 
   .card__button:hover{
@@ -65,7 +66,7 @@
 
   .card__cancel{
     position: relative;
-    transform: translateX(100%);
+    transform: translateX(150%);
     font-size: 1rem;
     text-align: center;
     vertical-align: middle;
@@ -77,7 +78,29 @@
     background: rgba(255, 96, 96, 0.384);
     transition: .3s ease;
   }
+  .card__edit{
+    position: relative;
+    transform: translateX(-30%);
+    font-size: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: uppercase;
+    border: 1px solid var(--lightgrey);
+    padding: .5rem;
+    border-radius: 0.25rem;
+    background: rgba(49, 49, 49, 0.384);
+    transition: .3s ease;
 
+  }
+  .card__edit-link{
+   
+    color: white;
+    text-decoration: none;
+
+  }
+  .card__edit:hover{
+    background: rgba(49, 49, 49, 0.884)
+  }
   .card__cancel:hover{
     background: red;
   }

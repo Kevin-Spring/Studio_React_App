@@ -81,11 +81,11 @@ class AdminLogin extends Component {
                             <h2 className={"contact__header"}>Login!</h2>
                             <div className={"form__container"}>
                                 <div className={"form__group field"}>
-                                    <input type="email" placeholder="email" name="email" id="email" />
+                                    <input type="email" className={"form__field"} placeholder="email" name="email" id="email" />
                                     <label htmlFor={"email"} className={"form__label"}>Email</label>
                                 </div>
                                 <div className={"form__group field"}>
-                                    <input type="password" placeholder="password" name="password" id="password" />
+                                    <input type="password" className={"form__field"} placeholder="password" name="password" id="password" />
                                     <label htmlFor={"password"} className={"form__label"}>Password</label>
                                 </div>
                                 <div className={"btn-animation"}>
@@ -101,15 +101,15 @@ class AdminLogin extends Component {
                             <h2 className={"contact__header"}>Register!</h2>
                             <div className={"form__container"}>
                                 <div className={"form__group field"}>
-                                    <input type="text" placeholder="username" name="username" id="username" />
+                                    <input type="text" className={"form__field"} placeholder="username" name="username" id="username" />
                                     <label htmlFor={"username"} className={"form__label"}>Username</label>
                                 </div>
                                 <div className={"form__group field"}>
-                                    <input type="email" placeholder="email" name="email" id="email" />
+                                    <input type="email" className={"form__field"} placeholder="email" name="email" id="email" />
                                     <label htmlFor={"email"} className={"form__label"}>Email</label>
                                 </div>
                                 <div className={"form__group field"}>
-                                    <input type="password" placeholder="password" name="password" id="password" />
+                                    <input type="password" className={"form__field"} placeholder="password" name="password" id="password" />
                                     <label htmlFor={"password"} className={"form__label"}>Password</label>
                                 </div>
                                 <button type={"submit"} className={"form-btn form__btn-underline"}> Register</button>

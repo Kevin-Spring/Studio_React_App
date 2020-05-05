@@ -12,6 +12,7 @@ class Studios extends Component{
     state={
         products: []
     }
+    
 
     async componentDidMount(){
         await axios
@@ -22,7 +23,6 @@ class Studios extends Component{
 
         })
     }
-
 
 
     render(){
@@ -40,10 +40,11 @@ class Studios extends Component{
                 {this.state.products.map( (product) => (
                     
                     <Card key={product.id}
+                          id = {product.id}
                           title = {product.title}
                           price= {product.price}
                           description = {product.description}
-                          image = {"http://localhost:1337" + product.image.formats.small.url} 
+                          image = {"http://localhost:1337" + product.image.formats.small.url}
                         />
 
                     )

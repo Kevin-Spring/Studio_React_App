@@ -25,7 +25,7 @@ class AdminForm extends Component{
         const res = await axios.post("http://localhost:1337/products", {
             title: e.target.elements.title.value,
             description: e.target.elements.description.value,
-            price: e.target.elements.price.value,
+            price: e.target.elements.price.value
             
         })
         console.log(res);

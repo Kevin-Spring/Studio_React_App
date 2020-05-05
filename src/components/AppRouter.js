@@ -8,6 +8,7 @@ import Booking from "./Booking";
 import AdminForm from "./AdminForm";
 import NotFoundPage from "./NotFoundPage";
 import AdminPage from "./AdminPage";
+import EditCard from "./EditCard";
 
 
 
@@ -24,6 +25,7 @@ const AppRouter = () => {
             <Route path="/bookings" component={Booking} exact />
             <Route path="/admin" exact component={AdminForm} />
             <Route path="/adminPage" exact component={AdminPage} />
+            <Route path="/edit" exact component={EditCard} />
             <Route component={NotFoundPage} />
             </Switch>
 
