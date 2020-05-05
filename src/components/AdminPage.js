@@ -5,23 +5,24 @@ import AdminProfile from "./Auth/AdminProfile";
 class AdminPage extends Component{
 
     state={
-        user: true
+        user: null
     }
 
-    findUserInfo(e){
-        console.log(e)
-    }
+    
 
     render(){
 
         return(
 
             <div>
-            {!this.state.condition && <AdminLogin userInfo={(this.findUserInfo)} />}
-            
-            
-            {this.state.condition && <AdminProfile />}
-            
+
+                {!this.state.user && <AdminLogin userInfo = { (e) => this.setState( {user:e.username} ) } />}
+                
+                
+                {this.state.user && <AdminProfile userData = {this.state.user} />}
+
+
+                
             </div>
         )
     }

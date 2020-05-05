@@ -10,7 +10,11 @@ class AdminProfile extends Component{
     render(){
 
         return(
-            <div>Profile info</div>
+            <div>
+
+            {this.props.userData}
+            
+            </div>
         )
 
     }

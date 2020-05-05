@@ -23,7 +23,7 @@ const Navbar = () => {
                     </li>
                     <li className={"nav-item"}>
                         {/* <Link to={"/login"} className={"nav-link underline"}>Log in / Log out</Link> */}
-                        <Link to={"/adminLogin"} className={"nav-link underline"}>Admin</Link>
+                        <Link to={"/adminPage"} className={"nav-link underline"}>Admin</Link>
                     </li>
                 </ul>
             </div>

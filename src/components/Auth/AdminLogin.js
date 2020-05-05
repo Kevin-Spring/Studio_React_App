@@ -10,7 +10,8 @@ import "../../style/_Form.scss";
 class AdminLogin extends Component {
 
     state = {
-        condition: true
+        condition: true,
+        user: ""
     }
     onClickRegister() {
         this.setState({ condition: false })
@@ -31,7 +32,9 @@ class AdminLogin extends Component {
                 console.log('Well done!');
                 console.log('User profile', response.data.user);
                 console.log('User token', response.data.jwt);
-                this.props.userInfo(response.data.jwt);
+
+                //För att skicka med info från child till parent
+                this.props.userInfo(response.data.user);
             })
             .catch(error => {
                 // Handle error.
