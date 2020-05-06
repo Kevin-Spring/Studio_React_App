@@ -2,6 +2,7 @@
 //Dashboard i framtiden
 
 import React, {Component} from "react";
+import AdminStudios from "../AdminStudios";
 
 
 class AdminProfile extends Component{
@@ -12,6 +13,7 @@ class AdminProfile extends Component{
         return(
             <div>
 
+            <AdminStudios />
             {this.props.userData}
             
             </div>

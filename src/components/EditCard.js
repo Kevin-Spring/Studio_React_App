@@ -73,7 +73,7 @@ class EditCard extends Component {
                             </div>
                             <br />
                             <br/>
-                            <Link to={"/studios"} className={"form-btn form__btn-underline"}>Take me back!</Link>
+                            <Link to={"/adminPage"} className={"form-btn form__btn-underline"}>Take me back!</Link>
 
                         </div>
 
