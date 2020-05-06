@@ -8,6 +8,17 @@ import Footer from "./Footer";
 
 class EditCard extends Component {
 
+    state= {
+
+        image: " "
+        
+    }
+
+    eventChange(e){
+        console.log(e.target.files[0]);
+        this.setState({image: e.target.files[0]})
+    }
+
     async onSubmitToApi(e) {
         e.preventDefault();
 
@@ -18,6 +29,17 @@ class EditCard extends Component {
 
         })
         console.log(res);
+
+        /* För att lägga till bild i strapi */
+        const data = new FormData();
+        data.append("files", this.state.image);
+        data.append("ref", "products");
+        data.append("refId", res.data.id);
+        data.append("field", "image");
+
+        const img = await axios.post("http://localhost:1337/upload", data)  
+       
+        console.log(img);
 
     }
 
@@ -42,6 +64,9 @@ class EditCard extends Component {
                             <div className={"form__group field"}>
                                 <input type={"number"} className={"form__field"} name={"price"} defaultValue={localStorage.getItem("price")} id="price" /> <br />
                                 <label htmlFor={"price"} className={"form__label"}>Price</label>
+                            </div>
+                            <div className={"form__group field"}>
+                            <input type={"file"} className={"form__field"} onChange={this.eventChange.bind(this)} name={"file"} />
                             </div>
                             <div className={"btn-animation"}>
                                 <button className={"form-btn form__btn-underline"}>Spara</button>
