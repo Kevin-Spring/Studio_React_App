@@ -1,35 +1,37 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 
-class AdminForm extends Component{
+class AdminForm extends Component {
 
-    state= {
+    state = {
 
         //title: " ",
         image: " "
-        
+
     }
 
-    eventChange(e){
+    eventChange(e) {
         console.log(e.target.files[0]);
-        this.setState({image: e.target.files[0]})
+        this.setState({ image: e.target.files[0] })
     }
 
-    async onSubmitToApi(e){
+    async onSubmitToApi(e) {
         e.preventDefault();
 
-        
+
         //this.setState({title: e.target.elements.title.value});
 
         const res = await axios.post("http://localhost:1337/products", {
             title: e.target.elements.title.value,
             description: e.target.elements.description.value,
             price: e.target.elements.price.value
-            
+
         })
         console.log(res);
-        
+
         /* För att lägga till bild i strapi */
         const data = new FormData();
         data.append("files", this.state.image);
@@ -37,33 +39,51 @@ class AdminForm extends Component{
         data.append("refId", res.data.id);
         data.append("field", "image");
 
-        const img = await axios.post("http://localhost:1337/upload", data)  
-       
+        const img = await axios.post("http://localhost:1337/upload", data)
+
         console.log(img);
-       
-        
+
+
 
     }
 
-    render(){
+    render() {
 
-        return(
+        return (
 
             <div>
 
-                <form onSubmit={this.onSubmitToApi.bind(this)}>
-                
-                    <input type={"text"} name={"title"}/> <br />
-                    <input type={"description"} name={"description"} /> <br />
-                    <input type={"number"} name={"price"} /> <br />
+                <Navbar />
+                <section className={"contact"}>
 
-                    <input type={"file"} onChange={this.eventChange.bind(this)} name={"file"} /> 
-                   
-                    
-                    <button>Spara</button>
+                <h2 className={"contact__header"}>Upload</h2>
+                    <form onSubmit={this.onSubmitToApi.bind(this)}>
+                        <div className={"form__container"}>
+                            <div className={"form__group field"}>
+                                <input type={"text"} className={"form__field"} name={"title"} id={"title"} />
+                                <label htmlFor={"title"} className={"form__label"}>Title</label>
+                            </div>
+                            <div className={"form__group field"}>
+                                <input type={"description"} className={"form__field"} name={"description"} id={"desc"} /> <br />
+                                <label htmlFor={"desc"} className={"form__label"}>Description</label>
+                            </div>
+                            <div className={"form__group field"}>
+                                <input type={"number"} className={"form__field"} name={"price"} id={"price"} /> <br />
+                                <label htmlFor={"price"} className={"form__label"}>Price</label>
+                            </div>
+                            <div className={"form__group field"}>
+                                <input type={"file"} className={"form__field"} onChange={this.eventChange.bind(this)} name={"file"} />
+                            </div>
 
-                </form>
-            
+                            <div className={"btn-animation"}>
+                                <button className={"form-btn form__btn-underline"}>Spara</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+                <Footer />
+
             </div>
 
         )

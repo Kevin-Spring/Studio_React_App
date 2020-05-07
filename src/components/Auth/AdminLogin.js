@@ -32,9 +32,11 @@ class AdminLogin extends Component {
                 console.log('Well done!');
                 console.log('User profile', response.data.user);
                 console.log('User token', response.data.jwt);
+                /* Reload to show Logout in Navbar */
+                window.location.reload(false);
 
                 //För att skicka med info från child till parent
-                this.props.userInfo(response.data.user);
+                this.props.userInfo(response.data.user, response.data.jwt);
             })
             .catch(error => {
                 // Handle error.

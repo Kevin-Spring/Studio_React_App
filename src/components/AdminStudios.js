@@ -31,7 +31,7 @@ class AdminStudios extends Component{
                 <Navbar />
                 
                 <section className={"card-page"}>
-                <h2 className={"studios__header"}>Studios</h2>
+                <h2 className={"studios__header"}>Welcome {this.props.name}</h2>
 
                 <div className="grid__wrapper-cards">
 

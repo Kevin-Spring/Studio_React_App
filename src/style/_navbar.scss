@@ -84,3 +84,24 @@
     top: 0;
     width: 100%;
 }
+
+#logOut{
+    display: none;
+    color:orange;
+}
+
+.logOut:hover{
+    transition: .3s ease;
+    transform: scale(1.1);
+}
+.upload-wrapper{
+    padding-right: 2rem;
+}
+.upload{
+    display: none;
+    color:orange;
+}
+.upload-wrapper:hover{
+    transition: .3s ease;
+    transform: scale(1.1);
+}

@@ -13,8 +13,8 @@ class AdminProfile extends Component{
         return(
             <div>
 
-            <AdminStudios />
-            {this.props.userData}
+            <AdminStudios name={this.props.userData}/>
+            
             
             </div>
         )

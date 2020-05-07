@@ -13,6 +13,8 @@ class AdminCard extends Component{
             .then((res)=>{
                 console.log(res)
             }) 
+
+            window.location.reload(false);
        
     }
 
@@ -37,10 +39,8 @@ class AdminCard extends Component{
                     <div className={"card__body"}>
                         <h5 className={"card__title"}>{this.props.title}</h5>
                         <p className={"card__text"}>{this.props.description} <span className={"card__price"}>{this.props.price} kr</span></p>
-                        <Link to={"/handle-bookings"} className={"card__button"}>Book</Link>
-                        <button onClick={this.onClickDelete.bind(this)} className={"card__cancel"}> Remove</button>
                         <button className={"card__edit"}> <Link to={"/edit"} className={"card__edit-link"} onClick={this.onClickEdit.bind(this)}>Edit</Link></button>
-                        
+                        <button onClick={this.onClickDelete.bind(this)} className={"card__cancel"}> Remove</button>
                     </div>
             </div>
             </div>
