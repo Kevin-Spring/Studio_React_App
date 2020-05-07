@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import ErrorLogin from "./ErrorLogin";
 
 
 class AdminForm extends Component {
 
     state = {
 
-        //title: " ",
-        image: " "
+        image: " ",
+        jwt: null || localStorage.getItem("jwt")
+
 
     }
 
@@ -48,41 +50,59 @@ class AdminForm extends Component {
     }
 
     render() {
+        const loggedIn = this.state.user || localStorage.getItem("jwt");
 
         return (
 
             <div>
 
-                <Navbar />
-                <section className={"contact"}>
+                {!loggedIn ?
 
-                <h2 className={"contact__header"}>Upload</h2>
-                    <form onSubmit={this.onSubmitToApi.bind(this)}>
-                        <div className={"form__container"}>
-                            <div className={"form__group field"}>
-                                <input type={"text"} className={"form__field"} name={"title"} id={"title"} />
-                                <label htmlFor={"title"} className={"form__label"}>Title</label>
-                            </div>
-                            <div className={"form__group field"}>
-                                <input type={"description"} className={"form__field"} name={"description"} id={"desc"} /> <br />
-                                <label htmlFor={"desc"} className={"form__label"}>Description</label>
-                            </div>
-                            <div className={"form__group field"}>
-                                <input type={"number"} className={"form__field"} name={"price"} id={"price"} /> <br />
-                                <label htmlFor={"price"} className={"form__label"}>Price</label>
-                            </div>
-                            <div className={"form__group field"}>
-                                <input type={"file"} className={"form__field"} onChange={this.eventChange.bind(this)} name={"file"} />
-                            </div>
+                    (
+                        <ErrorLogin />
+                    )
 
-                            <div className={"btn-animation"}>
-                                <button className={"form-btn form__btn-underline"}>Spara</button>
-                            </div>
+                    :
+
+                    (
+                        <div>
+                            <Navbar />
+                            <section className={"contact"}>
+
+                                <h2 className={"contact__header"}>Upload</h2>
+                                <form onSubmit={this.onSubmitToApi.bind(this)}>
+                                    <div className={"form__container"}>
+                                        <div className={"form__group field"}>
+                                            <input type={"text"} className={"form__field"} name={"title"} id={"title"} />
+                                            <label htmlFor={"title"} className={"form__label"}>Title</label>
+                                        </div>
+                                        <div className={"form__group field"}>
+                                            <input type={"description"} className={"form__field"} name={"description"} id={"desc"} /> <br />
+                                            <label htmlFor={"desc"} className={"form__label"}>Description</label>
+                                        </div>
+                                        <div className={"form__group field"}>
+                                            <input type={"number"} className={"form__field"} name={"price"} id={"price"} /> <br />
+                                            <label htmlFor={"price"} className={"form__label"}>Price</label>
+                                        </div>
+                                        <div className={"form__group field"}>
+                                            <input type={"file"} className={"form__field"} onChange={this.eventChange.bind(this)} name={"file"} />
+                                        </div>
+
+                                        <div className={"btn-animation"}>
+                                            <button className={"form-btn form__btn-underline"}>Spara</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </section>
+
+                            <Footer />
                         </div>
-                    </form>
-                </section>
+                    )
 
-                <Footer />
+                }
+
+
+
 
             </div>
 

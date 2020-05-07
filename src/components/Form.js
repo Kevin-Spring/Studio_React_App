@@ -46,7 +46,7 @@ class Form extends Component {
                 <section className={"contact"}>
                 <h2 className={"contact__header"}>get in touch!</h2>
        
-                <form onSubmit={this.handleOnSubmit} method="post" enctype="text/plain">
+                <form onSubmit={this.handleOnSubmit} method="post" encType="text/plain">
                     <div className={"form__container"}>
                         <div className={"form__group field"}>
                             <input type={"text"} className={"form__field"} placeholder={"Name"} name={"name"} id={'name'} onChange={this.handleOnChangeName} required />
