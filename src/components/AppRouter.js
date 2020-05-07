@@ -2,13 +2,13 @@ import React from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import App from "./App";
-//import Navbar from "./Navbar";
-import Card from "./Card";
+import Studios from "./Studios";
 import HandleBooking from "./HandleBookings";
 import Booking from "./Booking";
-//import Footer from "./Footer";
-import Login from "./Login";
+import AdminForm from "./AdminForm";
 import NotFoundPage from "./NotFoundPage";
+import AdminPage from "./AdminPage";
+import EditCard from "./EditCard";
 
 
 
@@ -19,12 +19,14 @@ const AppRouter = () => {
         <BrowserRouter>
 
             <Switch>
-            <Route path="/" component={App} exact></Route>
-            <Route path="/card" component={Card} exact></Route>
-            <Route path="/handle-bookings" component={HandleBooking} exact></Route>
-            <Route path="/bookings" component={Booking} exact></Route>
-            <Route path="/login" component={Login} exact></Route>
-            <Route component={NotFoundPage}></Route>
+            <Route path="/" component={App} exact />
+            <Route path="/studios" component={Studios} exact />
+            <Route path="/handle-bookings" component={HandleBooking} exact />
+            <Route path="/bookings" component={Booking} exact />
+            <Route path="/upload" exact component={AdminForm} />
+            <Route path="/adminPage" exact component={AdminPage} />
+            <Route path="/edit" exact component={EditCard} />
+            <Route component={NotFoundPage} />
             </Switch>
 
         

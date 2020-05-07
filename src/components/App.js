@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "./Navbar";
-//import Form from "./Form";
 import Footer from "./Footer";
 import LandingPage from "./LandingPage";
 

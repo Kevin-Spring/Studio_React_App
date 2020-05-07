@@ -2,6 +2,7 @@
     background: var(--darkgrey);
     box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     z-index: 100;
+    max-width: 100vw;
 }
 .spring-logo{
     position: relative;
@@ -82,4 +83,25 @@
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+#logOut{
+    display: none;
+    color:orange;
+}
+
+.logOut:hover{
+    transition: .3s ease;
+    transform: scale(1.1);
+}
+.upload-wrapper{
+    padding-right: 2rem;
+}
+.upload{
+    display: none;
+    color:orange;
+}
+.upload-wrapper:hover{
+    transition: .3s ease;
+    transform: scale(1.1);
 }

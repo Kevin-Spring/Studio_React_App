@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "../style/_card.scss";
 import "../style/_landingPage.scss";
 
 
@@ -14,7 +13,7 @@ const LandingPage = () => {
             <div className={"header__wrapper__hero"}>
                 <div className={"header__wrapper__hero-text hero__grid-item fadeIn"}>Photo,  Film,  Music</div>
                 <h1 className={"header__wrapper__hero-header hero__grid-item fadeIn"}>Spring Studio</h1>
-                <div className={"hero__grid-item"}><Link to={"/card"} className={"header__wrapper__hero-link underline fadeIn"} href={"#ourwork"}>Take a look!</Link></div>
+                <div className={"hero__grid-item"}><Link to={"/studios"} className={"header__wrapper__hero-link underline fadeIn"} href={"#ourwork"}>Take a look!</Link></div>
             </div>
         </div>
     </header>
@@ -35,7 +34,7 @@ const LandingPage = () => {
                         repudiandae praesentium ab dolores aliquid optio distinctio.</div>
                 </div>
 
-                <Link to={"/card"} className={"landingPage__bookStudio-link"}><h2 className={"landingPage__bookStudio underline"}>I want it!</h2></Link>
+                <Link to={"/studios"} className={"landingPage__bookStudio-link"}><h2 className={"landingPage__bookStudio underline"}>I want it!</h2></Link>
             </div>
             <div className={"species__grid-item species__grid-img"}></div>
         </div>
