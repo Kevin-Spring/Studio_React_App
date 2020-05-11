@@ -9,6 +9,7 @@ import AdminForm from "./AdminForm";
 import NotFoundPage from "./NotFoundPage";
 import AdminPage from "./AdminPage";
 import EditCard from "./EditCard";
+import FirebaseTest from "./FirebaseTest";
 
 
 
@@ -26,6 +27,7 @@ const AppRouter = () => {
             <Route path="/upload" exact component={AdminForm} />
             <Route path="/adminPage" exact component={AdminPage} />
             <Route path="/edit" exact component={EditCard} />
+            <Route path="/firebasetest" exact component={FirebaseTest} />
             <Route component={NotFoundPage} />
             </Switch>
 

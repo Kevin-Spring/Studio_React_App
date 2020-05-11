@@ -34,12 +34,6 @@ class AdminPage extends Component {
 
 
 
-
-                {/* {!this.state.user && <AdminLogin userInfo = { (e) => this.setState( {user:e.username} ) } />}
-                {this.state.user && <AdminProfile userData = {this.state.user} />} */}
-
-
-
             </div>
         )
     }
