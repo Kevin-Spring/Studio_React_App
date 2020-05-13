@@ -5,7 +5,7 @@ class FirebaseTest extends Component {
 
     onClickFirebase() {
         const docRef = firebase.firestore().collection("Bookings").doc("Bookings-info");
-        const docRef2 = firebase.firestore().collection("Bookings").doc("Bookings-info-2");
+        //const docRef2 = firebase.firestore().collection("Bookings").doc("Bookings-info-2");
 
         /* Hämta data från firebase */
         docRef.get().then( booking => {
@@ -23,10 +23,10 @@ class FirebaseTest extends Component {
             item:"janneball",
             price: 200
         })
-        docRef2.set({
+        /* docRef2.set({
             item:"janneball",
             price: 200
-        })
+        }) */
     }
 
     render() {
