@@ -26,7 +26,7 @@ class UserLogin extends Component {
         const password = e.target.elements.password.value;
         
         firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(res => console.log("Welcome"));
+        .then(res => this.props.userInfo(res.user.email));
        
     }
     onSubmitRegister(e) {
@@ -35,7 +35,8 @@ class UserLogin extends Component {
         const email = e.target.elements.email.value;
         const password = e.target.elements.password.value;
 
-        firebase.auth().createUserWithEmailAndPassword(email, password);
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(res => this.props.userInfo(res.user.email));
 
         
     }

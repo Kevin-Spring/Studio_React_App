@@ -5,13 +5,13 @@ import AdminProfile from "./Auth/AdminProfile";
 class AdminPage extends Component {
 
     state = {
-        user: null || localStorage.getItem("user"),
+        admin: null || localStorage.getItem("admin"),
         jwt: null
     }
 
 
     render() {
-        const loggedIn = this.state.user || localStorage.getItem("jwt");
+        const loggedIn = this.state.admin || localStorage.getItem("jwt");
 
         return (
 
@@ -19,17 +19,17 @@ class AdminPage extends Component {
 
                 {!loggedIn ?
 
-                    (<AdminLogin userInfo={(e) => {
+                    (<AdminLogin adminInfo={(e) => {
 
-                        this.setState({ user: e.username, jwt: e.jwt });
+                        this.setState({ admin: e.username, jwt: e.jwt });
                         localStorage.setItem("jwt", this.state.jwt);
-                        localStorage.setItem("user", this.state.user);
+                        localStorage.setItem("admin", this.state.admin);
                     }
                     } />)
 
                     :
 
-                    (<AdminProfile userData={this.state.user} />)
+                    (<AdminProfile adminData={this.state.admin} />)
                 }
 
 

@@ -36,7 +36,7 @@ class AdminLogin extends Component {
                 window.location.reload(false);
 
                 //För att skicka med info från child till parent
-                this.props.userInfo(response.data.user, response.data.jwt);
+                this.props.adminInfo(response.data.user, response.data.jwt);
             })
             .catch(error => {
                 // Handle error.

@@ -2,16 +2,21 @@
 //Dashboard i framtiden
 
 import React, {Component} from "react";
-import AdminStudios from "../AdminStudios";
-import ErrorLogin from "../ErrorLogin";
+import firebase from "../FirebaseConfig";
 
 
-class AdminProfile extends Component{
+class UserProfile extends Component{
 
     state = {
 
         jwt: null || localStorage.getItem("jwt")
 
+    }
+
+    logOut(){
+        localStorage.clear();
+        window.location.reload(false);
+        firebase.auth().signOut();
     }
 
 
@@ -25,7 +30,7 @@ class AdminProfile extends Component{
 
                 (   
                 
-                        <ErrorLogin />
+                    <button onClick = {this.logOut.bind(this)}>Logout</button>
                     
                 )
 
@@ -33,7 +38,7 @@ class AdminProfile extends Component{
 
 
                 (
-                    <AdminStudios name={this.props.adminData}/>
+                    <div></div>
                 )
                 
         }
@@ -44,4 +49,4 @@ class AdminProfile extends Component{
     }
 }
 
-export default AdminProfile;
+export default UserProfile;
