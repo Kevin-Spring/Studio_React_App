@@ -18,6 +18,15 @@ class UserProfile extends Component{
         window.location.reload(false);
         firebase.auth().signOut();
     }
+    deleteAcc(){
+        var user = firebase.auth().currentUser;
+
+        user.delete().then(function() {
+        // User deleted.
+        }).catch(function(error) {
+        // An error happened.
+        });
+    }
 
 
     render(){
@@ -29,8 +38,11 @@ class UserProfile extends Component{
             {!loggedIn ?
 
                 (   
-                
+                    <div>
+                    <h1>Welcome {this.props.userData} </h1>
                     <button onClick = {this.logOut.bind(this)}>Logout</button>
+                    <button onClick = {this.deleteAcc.bind(this)}>DELTE ACC</button>
+                    </div>
                     
                 )
 
