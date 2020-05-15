@@ -11,6 +11,7 @@ class UserLogin extends Component {
 
     state = {
         condition: true,
+        resetPass: false,
         user: ""
     }
     onClickRegister() {
@@ -19,6 +20,12 @@ class UserLogin extends Component {
     onClickLogin() {
         this.setState({ condition: true })
     }
+    onClickResetPassword() {
+        this.setState({
+            condition: "",
+            resetPass: true
+        })
+    }
     onSubmitLogin(e) {
         e.preventDefault();
 
@@ -26,10 +33,12 @@ class UserLogin extends Component {
         const password = e.target.elements.password.value;
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(res => this.props.userInfo(res.user.email));
+            .then(res => this.props.userInfo(res.user.email))
+            .catch(function (error) {
+                alert(error)
+            });
 
         // lägg in denna i res här: this.props.showDisplayName(displayName);
-
     }
     onSubmitRegister(e) {
         e.preventDefault();
@@ -45,12 +54,14 @@ class UserLogin extends Component {
                 res.user.sendEmailVerification();
                 this.props.userInfo(res.user.email)
                 this.props.showDisplayName(displayName);
-            })
+            }).catch(function (error) {
+                alert(error)
+            });
 
 
     }
 
-    onClickResetPassword(e) {
+    onSubmitResetPassword(e) {
         e.preventDefault();
         const auth = firebase.auth();
 
@@ -58,8 +69,16 @@ class UserLogin extends Component {
 
 
 
-        auth.sendPasswordResetEmail(emailAddress).then(function() {
-            console.log("Email sent.");
+        auth.sendPasswordResetEmail(emailAddress)
+            .then(function () {
+                alert("Email sent!")
+            }).catch(function (error) {
+                alert(error)
+            });
+
+        this.setState({
+            condition: true,
+            resetPass: false
         })
     }
 
@@ -76,7 +95,7 @@ class UserLogin extends Component {
 
 
                 <section className={"contact"}>
-                    {this.state.condition &&
+                    {this.state.condition === true &&
 
                         <div>
 
@@ -95,25 +114,15 @@ class UserLogin extends Component {
                                         <button type={"submit"} className={"form-btn form__btn-underline"}> Login</button>
                                     </div>
                                     <br />
-                                    <button onClick={this.onClickRegister.bind(this)} className={"form-btn form__btn-underline"}>Don't have an account?</button>
-                                    <br />
+
+                                    <button onClick={this.onClickRegister.bind(this)} className={"form-btn acc form__btn-underline"}>Don't have an account?</button>
+                                    <button onClick={this.onClickResetPassword.bind(this)} className={"form-btn pass"}>Forgot password?</button>
                                 </div>
                             </form>
-
-                            <form onSubmit={this.onClickResetPassword.bind(this)}>
-                                <div className={"form__container"}>
-                                    <div className={"form__group field"}>
-                                        <input type="text" name="janne" className={"form__field"} />
-                                        <label htmlFor={"janne"} className={"form__label"}>Email</label>
-                                    </div>
-                                    <button className={"form-btn form__btn-underline"}>Forgot password?</button>
-                                </div>
-                            </form>
-
                         </div>
                     }
 
-                    {!this.state.condition &&
+                    {this.state.condition === false &&
                         <form onSubmit={this.onSubmitRegister.bind(this)}>
                             <h2 className={"contact__header"}>Register!</h2>
                             <div className={"form__container"}>
@@ -133,7 +142,23 @@ class UserLogin extends Component {
                                 <br />
                                 <button onClick={this.onClickLogin.bind(this)} className={"form-btn form__btn-underline"}>Already have an account?</button>
                             </div>
-                        </form>}
+                        </form>
+                    }
+
+                    {this.state.resetPass &&
+                        <div>
+                            <h2 className={"contact__header"}>Reset Password</h2>
+                            <form onSubmit={this.onSubmitResetPassword.bind(this)}>
+                                <div className={"form__container"}>
+                                    <div className={"form__group field"}>
+                                        <input type="email" name="janne" className={"form__field"} required />
+                                        <label htmlFor={"janne"} className={"form__label"}>Email</label>
+                                    </div>
+                                    <button className={"form-btn form__btn-underline"}>Reset Password</button>
+                                </div>
+                            </form>
+                        </div>
+                    }
                 </section>
 
 

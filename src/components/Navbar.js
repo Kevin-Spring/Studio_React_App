@@ -42,6 +42,9 @@ class Navbar extends Component{
                             <Link to={"/bookings"} className={"nav-link underline"}>Bookings</Link>
                         </li>
                         <li className={"nav-item"}>
+                            <Link to={"/userpage"} className={"nav-link underline"}>Log in</Link>
+                        </li>
+                        <li className={"nav-item"}>
                             <Link to={"/adminPage"} className={"nav-link underline"} >Admin</Link>
                         </li>
                         <li className={"nav-item upload-wrapper"}>

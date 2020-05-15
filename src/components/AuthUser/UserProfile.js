@@ -24,7 +24,7 @@ class UserProfile extends Component{
         user.delete().then(function() {
         // User deleted.
         }).catch(function(error) {
-        // An error happened.
+        alert(error)
         });
     }
 
