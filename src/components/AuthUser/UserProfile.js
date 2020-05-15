@@ -22,10 +22,14 @@ class UserProfile extends Component{
         var user = firebase.auth().currentUser;
 
         user.delete().then(function() {
-        // User deleted.
+            localStorage.clear();
+            window.location.reload(false);
+            alert("Your account was successfully deleted!")
         }).catch(function(error) {
         alert(error)
         });
+
+        
     }
 
 

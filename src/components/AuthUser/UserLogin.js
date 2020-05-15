@@ -31,14 +31,17 @@ class UserLogin extends Component {
 
         const email = e.target.elements.email.value;
         const password = e.target.elements.password.value;
+        //const displayName = e.target.elements.email.value;
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(res => this.props.userInfo(res.user.email))
+            .then((res) => {
+                this.props.userInfo(res.user.email)
+                this.props.showDisplayName(email);
+            })
             .catch(function (error) {
                 alert(error)
             });
 
-        // lägg in denna i res här: this.props.showDisplayName(displayName);
     }
     onSubmitRegister(e) {
         e.preventDefault();
