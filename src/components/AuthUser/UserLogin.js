@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import firebase from "../../components/FirebaseConfig";
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import "../../style/_Form.scss";
+//import UserProfile from "./UserProfile";
 
 // register / login
 // conditional rendering
@@ -14,6 +16,27 @@ class UserLogin extends Component {
         resetPass: false,
         user: ""
     }
+
+    // Configure FirebaseUI.
+    uiConfig = {
+        // Popup signin flow rather than redirect flow.
+        signInFlow: 'popup',
+        // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
+        signInSuccessUrl: '/userpage',
+        // We will display Google and Facebook as auth providers.
+        signInOptions: [
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            firebase.auth.FacebookAuthProvider.PROVIDER_ID
+        ]
+    };
+
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            this.setState({ user: user.email });
+            console.log(user);
+        })
+    }
+
     onClickRegister() {
         this.setState({ condition: false })
     }
@@ -89,6 +112,7 @@ class UserLogin extends Component {
 
     render() {
 
+
         return (
 
 
@@ -126,26 +150,39 @@ class UserLogin extends Component {
                     }
 
                     {this.state.condition === false &&
-                        <form onSubmit={this.onSubmitRegister.bind(this)}>
-                            <h2 className={"contact__header"}>Register!</h2>
-                            <div className={"form__container"}>
-                                <div className={"form__group field"}>
-                                    <input type="text" className={"form__field"} placeholder="username" name="username" id="username" />
-                                    <label htmlFor={"username"} className={"form__label"}>Username</label>
+                        <div>
+                            <form onSubmit={this.onSubmitRegister.bind(this)}>
+                                <h2 className={"contact__header"}>Register!</h2>
+                                <div className={"form__container"}>
+                                    <div className={"form__group field"}>
+                                        <input type="text" className={"form__field"} placeholder="username" name="username" id="username" />
+                                        <label htmlFor={"username"} className={"form__label"}>Username</label>
+                                    </div>
+                                    <div className={"form__group field"}>
+                                        <input type="email" className={"form__field"} placeholder="email" name="email" id="email" />
+                                        <label htmlFor={"email"} className={"form__label"}>Email</label>
+                                    </div>
+                                    <div className={"form__group field"}>
+                                        <input type="password" className={"form__field"} placeholder="password" name="password" id="password" />
+                                        <label htmlFor={"password"} className={"form__label"}>Password</label>
+                                    </div>
+                                    <button type={"submit"} className={"form-btn form__btn-underline"}> Register</button>
+                                    <br />
+                                    <button onClick={this.onClickLogin.bind(this)} className={"form-btn form__btn-underline"}>Already have an account?</button>
                                 </div>
-                                <div className={"form__group field"}>
-                                    <input type="email" className={"form__field"} placeholder="email" name="email" id="email" />
-                                    <label htmlFor={"email"} className={"form__label"}>Email</label>
-                                </div>
-                                <div className={"form__group field"}>
-                                    <input type="password" className={"form__field"} placeholder="password" name="password" id="password" />
-                                    <label htmlFor={"password"} className={"form__label"}>Password</label>
-                                </div>
-                                <button type={"submit"} className={"form-btn form__btn-underline"}> Register</button>
-                                <br />
-                                <button onClick={this.onClickLogin.bind(this)} className={"form-btn form__btn-underline"}>Already have an account?</button>
+                            </form>
+
+                            <h2> OR</h2>
+
+                            <div>
+                                <h1>My App</h1>
+                                <p>Please sign-in:</p>
+                                <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
                             </div>
-                        </form>
+
+                            {/* this.state.user? <UserProfile userData={this.state.user}/> : <div></div> */}
+
+                        </div>
                     }
 
                     {this.state.resetPass &&

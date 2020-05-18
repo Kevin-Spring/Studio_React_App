@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import firebase from "./FirebaseConfig";
+//import {Link} from "react-router-dom";
 import "../style/_Form.scss";
 
 class Form extends Component {
@@ -9,6 +10,7 @@ class Form extends Component {
 
         this.state = {
 
+            condition: false,
             name: undefined,
             bookedTime: undefined,
             phoneNr: undefined
@@ -36,6 +38,29 @@ class Form extends Component {
 
     handleOnSubmit(e) {
         e.preventDefault();
+    
+        const userId = firebase.auth().currentUser.uid;
+
+        const db = firebase.firestore();
+        
+        if(firebase.auth().currentUser){
+            const docRef = db.collection("bookingFormData").doc(userId);
+
+        console.log(userId);
+
+        docRef.set({
+            name : e.target.elements.name.value,
+            telephone: e.target.elements.telephone.value,
+            time: e.target.elements.time.value,
+            message: e.target.elements.textarea.value
+        })
+        }
+
+        else{ 
+            alert("Please create an account before booking a studio")
+        }
+
+        /* IF CONDITION IS TRUE MEDDELANDET HAR SKICKATS GRATTIS RENDERA HTML */
 
     }
 
@@ -68,7 +93,7 @@ class Form extends Component {
                             <label htmlFor={"textarea"} className={"form__label"}>Anything else?</label>
                         </div>
                         <div className={"btn-animation"}>
-                            <button type={"submit"} className={"form-btn"}><Link to={"/bookings"} className={"form__btn-underline"}> SEND!</Link></button>
+                            <button type={"submit"} className={"form-btn"}>{/* <Link to={"/bookings"} className={"form__btn-underline"}> </Link> */}SEND!</button>
                         </div>
                     </div>
                 </form>

@@ -1,20 +1,21 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+require('dotenv').config();
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAkhJDOHRssMw_tElIwARMuRwtIFZ7R6i8",
-    authDomain: "klassprojekt-d562d.firebaseapp.com",
-    databaseURL: "https://klassprojekt-d562d.firebaseio.com",
-    projectId: "klassprojekt-d562d",
-    storageBucket: "klassprojekt-d562d.appspot.com",
-    messagingSenderId: "492382706490",
-    appId: "1:492382706490:web:2046fc59e613e40b7e4e03",
-    measurementId: "G-CLWVGYBS87"
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 firebase.initializeApp(firebaseConfig);
-//firebase.firestore().settings({timestampsInSnapshots:true});
+
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
