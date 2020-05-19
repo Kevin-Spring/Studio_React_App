@@ -22,7 +22,7 @@ class UserLogin extends Component {
         // Popup signin flow rather than redirect flow.
         signInFlow: 'popup',
         // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-        signInSuccessUrl: '/userpage',
+        signInSuccessUrl: '/userprofile',
         // We will display Google and Facebook as auth providers.
         signInOptions: [
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -33,6 +33,9 @@ class UserLogin extends Component {
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
             this.setState({ user: user.email });
+            user.updateProfile({
+                displayName: this.username
+        });
             console.log(user);
         })
     }
@@ -58,8 +61,9 @@ class UserLogin extends Component {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then((res) => {
-                this.props.userInfo(res.user.email)
-                this.props.showDisplayName(email);
+                //this.props.userInfo(res.user.email)
+                //this.props.showDisplayName(email);
+                console.log("Successfull Login")
             })
             .catch(function (error) {
                 alert(error)
@@ -77,9 +81,10 @@ class UserLogin extends Component {
             .createUserWithEmailAndPassword(email, password)
             .then((res) => {
                 //Skickar email
-                res.user.sendEmailVerification();
-                this.props.userInfo(res.user.email)
-                this.props.showDisplayName(displayName);
+                //res.user.sendEmailVerification();
+                //this.props.userInfo(res.user.email)
+                //this.props.showDisplayName(displayName);
+                console.log("Successfull Register!")
             }).catch(function (error) {
                 alert(error)
             });
@@ -107,6 +112,8 @@ class UserLogin extends Component {
             resetPass: false
         })
     }
+
+    
 
 
 

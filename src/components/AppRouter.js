@@ -11,6 +11,7 @@ import AdminPage from "./AdminPage";
 import EditCard from "./EditCard";
 import FirebaseTest from "./FirebaseTest";
 import UserPage from "./AuthUser/UserPage";
+import UserProfile from "./AuthUser/UserProfile";
 
 
 
@@ -30,6 +31,7 @@ const AppRouter = () => {
             <Route path="/edit" exact component={EditCard} />
             <Route path="/firebasetest" exact component={FirebaseTest} />
             <Route path="/userpage" exact component={UserPage} />
+            <Route path="/userprofile" exact component={UserProfile} /> 
             <Route component={NotFoundPage} />
             </Switch>
 

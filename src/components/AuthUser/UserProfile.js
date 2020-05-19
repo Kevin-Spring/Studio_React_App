@@ -9,9 +9,18 @@ class UserProfile extends Component{
 
     state = {
 
-        jwt: null || localStorage.getItem("jwt")
+        user: null
 
     }
+
+    componentDidMount() {
+        firebase.auth().onAuthStateChanged((user) => {
+            this.setState({ user: this.props.userData });
+            console.log(user);
+        })
+    }
+
+    
 
     logOut(){
         localStorage.clear();
@@ -34,12 +43,12 @@ class UserProfile extends Component{
 
 
     render(){
-        const loggedIn = this.state.user || localStorage.getItem("jwt");
+        const loggedIn = this.state.user;
 
         return(
             <div>
 
-            {!loggedIn ?
+            {loggedIn ?
 
                 (   
                     <div>

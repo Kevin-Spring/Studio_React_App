@@ -7,14 +7,19 @@ class UserPage extends Component {
 
     state = {
 
-        user: null || localStorage.getItem("userInfo"),
+        user: "",
         displayName: ""
     
     }
 
+    componentDidMount(){
+        firebase.auth().onAuthStateChanged( user => this.setState({user: user.email, displayName: user.displayName}))
+    }
+
 
     render() {
-        const loggedIn = this.state.user || localStorage.getItem("userInfo");
+        const loggedIn = this.state.user;
+        console.log(this.state.user);
 
         return (
 
@@ -22,7 +27,23 @@ class UserPage extends Component {
 
                 {!loggedIn ?
 
-                    (<UserLogin userInfo={(e) => {
+                    <UserLogin />
+
+                    :
+
+                    <UserProfile userData={this.state.displayName || this.state.user} />
+                }
+
+
+
+            </div>
+        )
+    }
+}
+
+export default UserPage;
+
+/* userInfo={(e) => {
 
                         this.setState({ user: e.username });
                        
@@ -38,20 +59,4 @@ class UserPage extends Component {
                                 })
                             }) 
                             
-                        }}
-
-                    />)
-
-                    :
-
-                    (<UserProfile userData={this.state.displayName} />)
-                }
-
-
-
-            </div>
-        )
-    }
-}
-
-export default UserPage;
+                        }} */
