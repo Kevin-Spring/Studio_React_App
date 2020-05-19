@@ -2,8 +2,14 @@ import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import "../style/_navbar.scss";
 import Logout from "./Auth/AdminLogout";
+import firebase from "./FirebaseConfig";
 
 class Navbar extends Component{
+
+    componentDidMount(){
+        this.renderAdminNav();
+        this.renderUserNav();
+    }
 
     renderAdminNav(){
         const logOutBtn = document.getElementById("logOut");
@@ -17,8 +23,18 @@ class Navbar extends Component{
             } 
     }
 
-    componentDidMount(){
-        this.renderAdminNav();
+    renderUserNav(){
+        const userBtn = document.querySelector(".userBtn");
+        
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+              userBtn.innerHTML = user.email;
+              userBtn.style.color = "orange";
+            } else {
+              // No user is signed in.
+            }
+          });
     }
 
     render(){
@@ -42,7 +58,7 @@ class Navbar extends Component{
                             <Link to={"/bookings"} className={"nav-link underline"}>Bookings</Link>
                         </li>
                         <li className={"nav-item"}>
-                            <Link to={"/userpage"} className={"nav-link underline"}>Log in</Link>
+                            <Link to={"/userpage"} className={"nav-link underline userBtn"}>Log in</Link>
                         </li>
                         <li className={"nav-item"}>
                             <Link to={"/adminPage"} className={"nav-link underline"} >Admin</Link>

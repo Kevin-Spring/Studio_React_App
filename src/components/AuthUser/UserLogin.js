@@ -39,6 +39,7 @@ class UserLogin extends Component {
             console.log(user);
         })
     }
+    component
 
     onClickRegister() {
         this.setState({ condition: false })

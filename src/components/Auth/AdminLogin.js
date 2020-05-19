@@ -80,7 +80,7 @@ class AdminLogin extends Component {
                     {this.state.condition &&
 
                         <form onSubmit={this.onSubmitLogin.bind(this)}>
-                            <h2 className={"contact__header"}>Login!</h2>
+                            <h2 className={"contact__header"}>Login Admin!</h2>
                             <div className={"form__container"}>
                                 <div className={"form__group field"}>
                                     <input type="email" className={"form__field"} placeholder="email" name="email" id="email" />

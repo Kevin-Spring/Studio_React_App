@@ -6,15 +6,51 @@ import "../style/_card.scss";
 
 class Card extends Component {
 
-    onClickBookStudio(){
+    renderLoginReq(){
 
-        const docRef = firebase.firestore().collection("Bookings").doc(this.props.id.toString());
+        
+        firebase.auth().onAuthStateChanged(function(user) {
 
-        docRef.set({
-            title: this.props.title,
-            description: this.props.description,
-            price: this.props.price
-        })
+            const bookBtn = document.querySelectorAll(".card__button");
+
+            if (user) {
+              // User is signed in.
+            
+            } else {
+              // No user is signed in.
+              for(let i = 0; i< bookBtn.length; i++){
+                    bookBtn[i].style.display= "none";
+                }
+            }
+          });
+    }
+
+    componentDidMount(){
+        this.renderLoginReq();
+    }
+
+    onClickBookStudio() {
+
+        const userId = firebase.auth().currentUser.uid;
+
+        const db = firebase.firestore();
+
+        if (firebase.auth().currentUser) {
+
+            db.collection("bookingStudioData").doc(userId)
+                .collection("personalData").add({
+                    studioId: this.props.id.toString(),
+                    title: this.props.title,
+                    description: this.props.description,
+                    price: this.props.price,
+                    image: this.props.image
+                });
+
+        } else {
+            alert("Please create an account before booking a studio")
+        }
+
+        /* IF CONDITION ANVÄNDARE MÅSTE VARA INLOGGAD */
 
     }
 

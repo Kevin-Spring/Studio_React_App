@@ -1,14 +1,17 @@
 //Admin profile
 //Dashboard i framtiden
 
-import React, {Component} from "react";
+import React, { Component } from "react";
 import firebase from "../FirebaseConfig";
+import Navbar from "../Navbar";
+import "../../style/_Form.scss";
 
 
-class UserProfile extends Component{
+class UserProfile extends Component {
 
     state = {
 
+        image: " ",
         user: null
 
     }
@@ -20,54 +23,67 @@ class UserProfile extends Component{
         })
     }
 
-    
 
-    logOut(){
+
+    logOut() {
         localStorage.clear();
         window.location.reload(false);
         firebase.auth().signOut();
     }
-    deleteAcc(){
+    deleteAcc() {
         var user = firebase.auth().currentUser;
 
-        user.delete().then(function() {
+        user.delete().then(function () {
             localStorage.clear();
             window.location.reload(false);
             alert("Your account was successfully deleted!")
-        }).catch(function(error) {
-        alert(error)
+        }).catch(function (error) {
+            alert(error)
         });
 
-        
+
     }
 
 
-    render(){
+
+
+    render() {
+
         const loggedIn = this.state.user;
 
-        return(
+
+        return (
             <div>
+                <Navbar />
 
-            {loggedIn ?
+                {loggedIn ?
 
-                (   
-                    <div>
-                    <h1>Welcome {this.props.userData} </h1>
-                    <button onClick = {this.logOut.bind(this)}>Logout</button>
-                    <button onClick = {this.deleteAcc.bind(this)}>DELTE ACC</button>
-                    </div>
-                    
-                )
+                    (
+                        <div>
 
-                :
+                            <section className={"contact"}>
+                                <h2 className={"contact__header"}>Welcome {this.props.userData} </h2>
+
+                               
 
 
-                (
-                    <div></div>
-                )
-                
-        }
-            
+
+                                <button onClick={this.logOut.bind(this)} className={"form-btn"}>Logout</button>
+                                <button onClick={this.deleteAcc.bind(this)} className={"form-btn"}>DELTE ACC</button>
+                            </section>
+                        </div>
+
+                    )
+
+                    :
+
+
+                    (
+                        <div></div>
+                    )
+
+                }
+
             </div>
         )
 

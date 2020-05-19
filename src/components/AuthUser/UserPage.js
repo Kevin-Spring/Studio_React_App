@@ -14,12 +14,12 @@ class UserPage extends Component {
 
     componentDidMount(){
         firebase.auth().onAuthStateChanged( user => this.setState({user: user.email, displayName: user.displayName}))
+        
     }
 
 
     render() {
         const loggedIn = this.state.user;
-        console.log(this.state.user);
 
         return (
 

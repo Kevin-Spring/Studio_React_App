@@ -9,43 +9,21 @@ class Form extends Component {
         super(props);
 
         this.state = {
-
             condition: false,
-            name: undefined,
-            bookedTime: undefined,
-            phoneNr: undefined
         }
-    }
-
-    handleOnChangeName = (e) => {
-
-        this.setState({ name: e.target.value })
-        localStorage.setItem("Name", e.target.value);
 
     }
-    handleOnChangeTime = (e) => {
-
-        this.setState({ bookedTime: e.target.value })
-        localStorage.setItem("BookedTime", e.target.value);
-
-    }
-    handleOnChangeMobile = (e) => {
-
-        this.setState({ phoneNr: e.target.value })
-        localStorage.setItem("PhoneNr", e.target.value);
-    }
-
 
     handleOnSubmit(e) {
         e.preventDefault();
-
+        
         const userId = firebase.auth().currentUser.uid;
-
+        
         const db = firebase.firestore();
 
         if (firebase.auth().currentUser) {
 
-            db.collection("bookingFormData").doc(userId)
+                db.collection("bookingFormData").doc(userId)
                 .collection("personalData").add({
                     name: e.target.elements.name.value,
                     telephone: e.target.elements.telephone.value,
@@ -57,45 +35,67 @@ class Form extends Component {
             alert("Please create an account before booking a studio")
         }
 
-        /* IF CONDITION ANVÄNDARE MÅSTE VARA INLOGGAD */
-
-    }
-
-    onClickSubmit() {
         this.setState({ condition: true })
+
     }
+
+     /* IF CONDITION ANVÄNDARE MÅSTE VARA INLOGGAD */
+
+    renderLoginReq(){
+
+        const userBookStudio = document.querySelector(".user-book-studio");
+        const userNeedLogin = document.querySelector(".user-need-login");
+        
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+              // User is signed in.
+                userBookStudio.style.display = " ";
+                userNeedLogin.style.display = "none";
+            
+            } else {
+              // No user is signed in.
+              userBookStudio.style.display = "none";
+                userNeedLogin.style.display = " ";
+            }
+          });
+    }
+
+    componentDidMount(){
+        this.renderLoginReq();
+
+        console.log(firebase.auth().currentUser.uid);
+    }
+
 
     render() {
         return (
+            
 
             <div>
 
-            {!firebase.auth().currentUser &&
-                <section className={"contact"}>
-                <h2 className={"contact__header"}>Please create an account to book studio!</h2>
-                <Link to={"/userpage"} className={"form-btn"}>Create account</Link>
-                </section>
-            }
+        
 
-                {this.state.condition === false && firebase.auth().currentUser &&
+                {this.state.condition === false &&
+
+                    <div className={"user-book-studio"}>
 
                     <section className={"contact"}>
                         <h2 className={"contact__header"}>get in touch!</h2>
 
-                        <form onSubmit={this.handleOnSubmit} method="post" encType="text/plain">
+                        <form onSubmit={this.handleOnSubmit.bind(this)} method="post" encType="text/plain">
                             <div className={"form__container"}>
                                 <div className={"form__group field"}>
-                                    <input type={"text"} className={"form__field"} placeholder={"Name"} name={"name"} id={'name'} onChange={this.handleOnChangeName} required />
+                                    <input type={"text"} className={"form__field"} placeholder={"Name"} name={"name"} id={'name'} required />
                                     <label htmlFor={"name"} className={"form__label"}>Name</label>
                                 </div>
                                 <div className={"form__group field"}>
                                     <input type={"text"} className={"form__field"} name={"time"} id={"input__time"} placeholder={"Time"}
-                                        onChange={this.handleOnChangeTime} required />
+                                        required />
                                     <label htmlFor={"input__time"} className={"form__label"}>What Time?</label>
                                 </div>
                                 <div className={"form__group field"}>
                                     <input type="number" className={"form__field"} name={"telephone"} id={"input__telephone"} placeholder={"Telephone"}
-                                        onChange={this.handleOnChangeMobile} required />
+                                         required />
                                     <label htmlFor={"input__telephone"} className={"form__label"}>Telephone</label>
                                 </div>
                                 <div className={"form__group field"}>
@@ -104,25 +104,31 @@ class Form extends Component {
                                     <label htmlFor={"textarea"} className={"form__label"}>Anything else?</label>
                                 </div>
                                 <div className={"btn-animation"}>
-                                    <button type={"submit"} className={"form-btn"} onClick={this.onClickSubmit.bind(this)}>SEND!</button>
+                                    <button type={"submit"} className={"form-btn"}>SEND!</button>
                                 </div>
                             </div>
                         </form>
-
-                        <div>{this.state.name}</div>
-                        <div>{this.state.bookedTime}</div>
-                        <div>{this.state.phoneNr}</div>
                     </section>
+                    </div>
 
 
                 }
 
-                {this.state.condition === true && firebase.auth().currentUser &&
+                {this.state.condition === true &&
                     <div>
                         <section className={"contact"}>
-                            <h2 className={"contact__header"}>Message Sent!</h2>
+                            <h2 className={"contact__header"}>Booking Confirmed!</h2>
                         </section>
 
+                    </div>
+                }
+
+                {
+                    <div className={"user-need-login"}>
+                    <section className={"contact"}>
+                    <h2 className={"contact__header"}>Please log in first!</h2>
+                    <Link to={"/userpage"} className={"form-btn"}>Log in!</Link>
+                    </section>
                     </div>
                 }
 

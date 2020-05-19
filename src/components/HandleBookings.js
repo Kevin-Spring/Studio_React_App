@@ -9,9 +9,9 @@ const HandleBooking = () => {
 
     return(
         <div>
-        <Navbar />
-        <section className={"handle__form"}>
-            <Form />
+            <Navbar />
+            <section className={"handle__form"}>
+                <Form />
             </section>
             <Footer />
         </div>
