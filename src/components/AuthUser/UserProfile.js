@@ -77,12 +77,14 @@ class UserProfile extends Component {
          
                )
 
-               const img = document.querySelector("#img");
-
           firebase.auth().onAuthStateChanged(user =>{
              if(user){
                  firebase.storage().ref("profilepictures/" + "users/" + user.uid + "/" + file.name).getDownloadURL().then(imgUrl => {
-                     img.src = imgUrl;
+                     
+                     this.setState({image:imgUrl})
+                     console.log(this.state.image)
+
+                     
                  })
              }
          })
@@ -90,11 +92,10 @@ class UserProfile extends Component {
 
 
     //To upload file
-    onSubmitToFirebase(e) {
-         e.preventDefault();
-
-         //let file = e.target.files[0];
+    onSubmitToFirebase() {
          
+
+         localStorage.setItem("profilePic", this.state.image);
         
     }
 
@@ -111,9 +112,8 @@ class UserProfile extends Component {
 
                     (
                         <div>
-
                             <section className={"contact"}>
-                                <h2 className={"contact__header"}>Welcome {this.props.userData} </h2>
+                                <h2 className={"contact__header"}>Welcome {this.props.userData}  <img src={this.state.image} alt="" id={"img"}></img> </h2>
 
                                 <form onSubmit={this.onSubmitToFirebase.bind(this)}>
                                     <div className={"form__container"}>
@@ -123,7 +123,7 @@ class UserProfile extends Component {
                                         <progress value="0" max="100" id="uploader">0%</progress>
                                         <br />
 
-                                        <img src="placeholder.jpg" alt="" id={"img"}></img>
+                                       
 
                                         <div className={"btn-animation"}>
                                             <button className={"form-btn form__btn-underline"}>Spara</button>

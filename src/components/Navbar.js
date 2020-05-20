@@ -25,14 +25,18 @@ class Navbar extends Component{
 
     renderUserNav(){
         const userBtn = document.querySelector(".userBtn");
+       
         
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
               // User is signed in.
               userBtn.innerHTML = user.email;
               userBtn.style.color = "orange";
+             
             } else {
               // No user is signed in.
+                
+
             }
           });
     }
@@ -59,6 +63,9 @@ class Navbar extends Component{
                         </li>
                         <li className={"nav-item"}>
                             <Link to={"/userpage"} className={"nav-link underline userBtn"}>Log in</Link>
+                        </li>
+                        <li className={"nav-item"}>
+                            <img src={localStorage.getItem("profilePic")} style={{height: 30 + "px"}} alt={""}></img>
                         </li>
                         <li className={"nav-item"}>
                             <Link to={"/adminPage"} className={"nav-link underline"} >Admin</Link>
