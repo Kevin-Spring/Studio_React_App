@@ -25,6 +25,7 @@ class Navbar extends Component{
 
     renderUserNav(){
         const userBtn = document.querySelector(".userBtn");
+        const bookings = document.querySelector(".bookings");
        
         
         firebase.auth().onAuthStateChanged(function(user) {
@@ -32,9 +33,11 @@ class Navbar extends Component{
               // User is signed in.
               userBtn.innerHTML = user.email;
               userBtn.style.color = "orange";
+              bookings.style.display = "";
              
             } else {
               // No user is signed in.
+                bookings.style.display = "none";
                 
 
             }
@@ -58,8 +61,8 @@ class Navbar extends Component{
                     </ul>
     
                     <ul className={"navbar__items-right-wrapper"}>
-                        <li className={"nav-item"}>
-                            <Link to={"/bookings"} className={"nav-link underline"}>Bookings</Link>
+                        <li className={"nav-item bookings"}>
+                            <Link to={"/bookings"} className={"nav-link underline bookings"}>My Bookings</Link>
                         </li>
                         <li className={"nav-item"}>
                             <Link to={"/userpage"} className={"nav-link underline userBtn"}>Log in</Link>
