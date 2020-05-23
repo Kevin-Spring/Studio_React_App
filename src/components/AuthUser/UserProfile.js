@@ -12,7 +12,8 @@ class UserProfile extends Component {
     state = {
 
         image: undefined,
-        user: null
+        user: null,
+        condition: true
 
     }
 
@@ -42,7 +43,12 @@ class UserProfile extends Component {
 
 
     }
-
+    onClickEditProfile(){
+        this.setState({condition : false})
+    }
+    onClickBackToProfile(){
+        this.setState({condition : true})
+    }
 
     //To upload file
     async profilePic(e) {
@@ -108,15 +114,43 @@ class UserProfile extends Component {
             <div>
                 <Navbar />
 
-                {loggedIn ?
+                <section className={"contact"}>
+
+                {loggedIn && this.state.condition === true &&
 
                     (
                         <div>
-                            <section className={"contact"}>
-                                <h2 className={"contact__header"}>Welcome {this.props.userData}  <img src={this.state.image} alt="" id={"img"}></img> </h2>
+                            
+                                <h2 className={"contact__header"}>Welcome {this.props.userData} </h2>
+                                <img src={localStorage.getItem("profilePic")} style={{height: 300 + "px", paddingLeft: 38 + "%" }} alt={""}></img>
+
+
+                                <div>
+                                <button onClick={this.onClickEditProfile.bind(this)} className={"form-btn"}>Edit Profile</button>
+
+                                <button onClick={this.logOut.bind(this)} className={"form-btn"}>Logout</button>
+                            
+                                </div>
+                           
+                        </div>
+
+                    )
+
+                }
+
+                {loggedIn && this.state.condition === false &&
+                
+                    <div>
+                            
+                                <h2 className={"contact__header"}>Welcome {this.props.userData}  </h2>
 
                                 <form onSubmit={this.onSubmitToFirebase.bind(this)}>
                                     <div className={"form__container"}>
+
+
+
+                                    <img src={this.state.image} alt="" id={"img"}></img>
+
                                         <div className={"form__group field"}>
                                             <input type={"file"} className={"form__field img"} onChange={this.profilePic.bind(this)} name={"file"} id={"fileButton"} />
                                         </div>
@@ -132,25 +166,19 @@ class UserProfile extends Component {
                                     
                                 </form>
 
+                                <button onClick={this.deleteAcc.bind(this)} className={"form-btn"}>DELETE ACCOUNT</button>
                                 
-                                
+                                <br />
 
-                                <button onClick={this.logOut.bind(this)} className={"form-btn"}>Logout</button>
-                                <button onClick={this.deleteAcc.bind(this)} className={"form-btn"}>DELTE ACC</button>
-                            </section>
+                                <button onClick={this.onClickBackToProfile.bind(this)} className={"form-btn"}>Go Back</button>
+                                
+                           
                         </div>
-
-                    )
-
-                    :
-
-
-                    (
-                        <div>
-                                </div>
-                    )
-
+                
+                
                 }
+
+                </section>
 
             </div>
         )

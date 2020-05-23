@@ -18,6 +18,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
+
+
+
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export const auth = firebase.auth();
