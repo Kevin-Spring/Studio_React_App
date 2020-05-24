@@ -22,7 +22,7 @@ class UserLogin extends Component {
         // Popup signin flow rather than redirect flow.
         signInFlow: 'popup',
         // Redirect to /signedIn after sign in is successful. Alternatively you can provide a callbacks.signInSuccess function.
-        signInSuccessUrl: '/userprofile',
+        signInSuccessUrl: '/userpage',
         // We will display Google and Facebook as auth providers.
         signInOptions: [
             firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -30,16 +30,15 @@ class UserLogin extends Component {
         ]
     };
 
-    componentDidMount() {
+    componentWillUpdate() {
         firebase.auth().onAuthStateChanged((user) => {
             this.setState({ user: user.email });
             user.updateProfile({
                 displayName: this.username
-        });
+            });
             console.log(user);
         })
     }
-    component
 
     onClickRegister() {
         this.setState({ condition: false })
@@ -114,7 +113,7 @@ class UserLogin extends Component {
         })
     }
 
-    
+
 
 
 
@@ -152,6 +151,12 @@ class UserLogin extends Component {
 
                                     <button onClick={this.onClickRegister.bind(this)} className={"form-btn acc form__btn-underline"}>Don't have an account?</button>
                                     <button onClick={this.onClickResetPassword.bind(this)} className={"form-btn pass"}>Forgot password?</button>
+
+                                    <h2 className={"contact__header-2"}> OR</h2>
+
+                                    <div>
+                                        <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -179,16 +184,6 @@ class UserLogin extends Component {
                                     <button onClick={this.onClickLogin.bind(this)} className={"form-btn form__btn-underline"}>Already have an account?</button>
                                 </div>
                             </form>
-
-                            <h2> OR</h2>
-
-                            <div>
-                                <h1>My App</h1>
-                                <p>Please sign-in:</p>
-                                <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
-                            </div>
-
-                            {/* this.state.user? <UserProfile userData={this.state.user}/> : <div></div> */}
 
                         </div>
                     }

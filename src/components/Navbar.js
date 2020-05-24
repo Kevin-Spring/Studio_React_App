@@ -8,7 +8,38 @@ class Navbar extends Component{
 
     componentDidMount(){
         this.renderAdminNav();
-        this.renderUserNav();
+
+        const userBtn = document.querySelector(".userBtn");
+        const bookings = document.querySelector(".bookings");
+
+        //To get the profile picture & username in Navbar
+        //Sending props from userprofile did not work like intended
+        firebase.auth().onAuthStateChanged(user =>{
+            if(user){
+
+                const userId = firebase.auth().currentUser.uid;
+                const db = firebase.firestore();
+                let bookingRef = db.collection('userData').doc(userId);
+                 let getDoc = bookingRef.get()
+                 .then(doc => {
+                    if (!doc.exists) {
+                      console.log('No such document!');
+                      
+                    } else {
+                        
+                        userBtn.innerHTML = doc.data().username;
+                        userBtn.style.color = "orange";
+                        bookings.style.display = "";
+                    }
+                  })
+                  .catch(err => {
+                    console.log('Error getting document', err);
+                  });
+            } else {
+                
+                bookings.style.display = "none";
+            }
+        }) 
     }
 
     renderAdminNav(){
@@ -21,27 +52,6 @@ class Navbar extends Component{
             uploadBtn.style.display = "contents";
             
             } 
-    }
-
-    renderUserNav(){
-        const userBtn = document.querySelector(".userBtn");
-        const bookings = document.querySelector(".bookings");
-       
-        
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-              // User is signed in.
-              userBtn.innerHTML = user.email;
-              userBtn.style.color = "orange";
-              bookings.style.display = "";
-             
-            } else {
-              // No user is signed in.
-                bookings.style.display = "none";
-                
-
-            }
-          });
     }
 
     render(){
@@ -68,7 +78,7 @@ class Navbar extends Component{
                             <Link to={"/userpage"} className={"nav-link underline userBtn"}>Log in</Link>
                         </li>
                         <li className={"nav-item"}>
-                            <img src={localStorage.getItem("profilePic")} style={{height: 30 + "px"}} alt={""}></img>
+                            <img src={this.props.profilePic} style={{height: 30 + "px"}} alt={""}></img>
                         </li>
                         <li className={"nav-item"}>
                             <Link to={"/adminPage"} className={"nav-link underline"} >Admin</Link>

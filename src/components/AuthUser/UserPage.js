@@ -13,9 +13,16 @@ class UserPage extends Component {
     }
 
     componentDidMount(){
-        firebase.auth().onAuthStateChanged( user => this.setState({user: user.email, displayName: user.displayName}))
+
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.setState({user: user.email, displayName: user.displayName})
+            }
+            
         
+        })
     }
+    
 
 
     render() {
@@ -42,21 +49,3 @@ class UserPage extends Component {
 }
 
 export default UserPage;
-
-/* userInfo={(e) => {
-
-                        this.setState({ user: e.username });
-                       
-                        localStorage.setItem("userInfo", this.state.user);
-                    }} 
-                        showDisplayName = { (username)=>{
-
-                            firebase.auth().onAuthStateChanged( (user)=> {
-                                user.updateProfile({
-                                    displayName: username
-                                }).then( ()=>{
-                                    this.setState({displayName: user.displayName})
-                                })
-                            }) 
-                            
-                        }} */

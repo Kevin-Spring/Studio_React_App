@@ -3,13 +3,22 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import "../style/_bookings.scss";
 import firebase from "./FirebaseConfig";
+import Card from "./Card";
 
 
 
 class MyBookings extends Component {
 
+    state={
+        bookings: []
+    }
+
 
     componentDidMount() {
+
+        const cardBtn = document.querySelector(".card__button");
+        cardBtn.style.display = "none";
+
 
         const userId = firebase.auth().currentUser.uid;
 
@@ -26,8 +35,11 @@ class MyBookings extends Component {
                     }
 
                     snapshot.forEach(doc => {
-                        console.log(doc.id, '=>', doc.data());
+                        //console.log(doc.id, '=>', doc.data());
+                        this.setState({bookings: doc.data()})
                     });
+
+                    
                 })
                 .catch(err => {
                     console.log('Error getting documents', err);
@@ -36,9 +48,12 @@ class MyBookings extends Component {
         }
     }
 
+
         render(){
 
+            console.log(this.state.bookings);
 
+        
             return (
                 <div>
                     <Navbar />
@@ -47,20 +62,13 @@ class MyBookings extends Component {
                     <section className={"bookings"}>
 
                     <h2 className={"bookings__header"}>Your bookings!</h2>
-                
-                <div className={"bookings__wrapper"}>
-    
-                <div className={"card"}>
-                <div className={"card-img-top-1"} alt={"cat"}></div>
-                    <div className={"card__body"}>
-                        <h5 className={"card__title"}>Studio 1</h5>
-                        <p className={"card__text"}>20/4, kl 9 - 17</p>
-                        <div to={"/handle-bookings"} className={"card__button"}>Boka om</div>
-                        <button className={"card__cancel"}>Avboka</button>
-                    </div>
-                </div>
-                </div>
 
+                    <Card image = {this.state.bookings.image}
+                          title = {this.state.bookings.title}
+                          price= {this.state.bookings.price}
+                          description = {this.state.bookings.description}
+                          
+                        />
 
 
                     </section>
