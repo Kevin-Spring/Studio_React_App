@@ -163,7 +163,7 @@ class UserProfile extends Component {
 
         return (
             <div>
-                <Navbar username={this.state.username} profilePic={this.state.image}/>
+                <Navbar />
 
                 <section className={"contact"}>
 

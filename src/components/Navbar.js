@@ -16,6 +16,11 @@ class Navbar extends Component{
         //Sending props from userprofile did not work like intended
         firebase.auth().onAuthStateChanged(user =>{
             if(user){
+                let navProfilePic = document.querySelector(".navProfilePic");
+
+                firebase.storage().ref("profilepictures/users/" + user.uid + "/profilePic.jpg").getDownloadURL().then(imgUrl => {
+                    navProfilePic.src = imgUrl 
+                })
 
                 const userId = firebase.auth().currentUser.uid;
                 const db = firebase.firestore();
@@ -78,7 +83,7 @@ class Navbar extends Component{
                             <Link to={"/userpage"} className={"nav-link underline userBtn"}>Log in</Link>
                         </li>
                         <li className={"nav-item"}>
-                            <img src={this.props.profilePic} style={{height: 30 + "px"}} alt={""}></img>
+                            <img src="" style={{height: 30 + "px"}} alt={""} className={"navProfilePic"}></img>
                         </li>
                         <li className={"nav-item"}>
                             <Link to={"/adminPage"} className={"nav-link underline"} >Admin</Link>

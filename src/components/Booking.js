@@ -9,76 +9,102 @@ import Card from "./Card";
 
 class MyBookings extends Component {
 
-    state={
+    state = {
         bookings: []
     }
 
 
     componentDidMount() {
 
-        const cardBtn = document.querySelector(".card__button");
-        cardBtn.style.display = "none";
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+
+                const userId = firebase.auth().currentUser.uid;
+
+                const db = firebase.firestore();
 
 
-        const userId = firebase.auth().currentUser.uid;
 
-        const db = firebase.firestore();
 
-        if (firebase.auth().currentUser) {
+                let bookingRef = db.collection('bookingStudioData').doc(userId).collection("personalData");
+                let query = bookingRef.get()
+                    .then(snapshot => {
+                        if (snapshot.empty) {
+                            console.log('No matching documents.');
+                            return;
+                        }
 
-            let bookingRef = db.collection('bookingStudioData').doc(userId).collection("personalData");
-            let query = bookingRef.get()
-                .then(snapshot => {
-                    if (snapshot.empty) {
-                        console.log('No matching documents.');
-                        return;
-                    }
+                        let studios = [];
 
-                    snapshot.forEach(doc => {
-                        //console.log(doc.id, '=>', doc.data());
-                        this.setState({bookings: doc.data()})
+                        snapshot.forEach(doc => {
+                            //console.log(doc.id, '=>', doc.data());
+                            studios.push(doc.data())
+
+                        });
+
+                        this.setState({ bookings: studios })
+
+                        const cardBtn = document.querySelector(".card__button");
+                        cardBtn.style.display = "none";
+
+
+                    })
+                    .catch(err => {
+                        console.log('Error getting documents', err);
                     });
 
-                    
-                })
-                .catch(err => {
-                    console.log('Error getting documents', err);
-                });
 
-        }
+
+            }
+
+
+        })
+
+
+
     }
 
 
-        render(){
+    render() {
 
-            console.log(this.state.bookings);
-
-        
-            return (
-                <div>
-                    <Navbar />
+        console.log(this.state.bookings);
 
 
-                    <section className={"bookings"}>
+        return (
+            <div>
+                <Navbar />
+
+
+                <section className={"bookings"}>
 
                     <h2 className={"bookings__header"}>Your bookings!</h2>
 
-                    <Card image = {this.state.bookings.image}
-                          title = {this.state.bookings.title}
-                          price= {this.state.bookings.price}
-                          description = {this.state.bookings.description}
-                          
+                    <div className="grid__wrapper-cards">
+
+                    {this.state.bookings.map((studio) => (
+
+                        <Card
+                            title={studio.title}
+                            price={studio.price}
+                            description={studio.description}
+                            image={studio.image}
                         />
 
+                    )
 
-                    </section>
+                    )}
+
+                    </div>
 
 
-                    <Footer />
-                </div>
-            )
-        }
+                </section>
 
+
+                <Footer />
+            </div>
+        )
     }
 
-    export default MyBookings;
+}
+
+export default MyBookings;
