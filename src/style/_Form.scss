@@ -93,6 +93,7 @@
     left:50%;
     transform: translateX(-50%);
     margin-top: 3rem;
+    margin-bottom: 3rem;
     border: 1px solid var(--lightgrey);
     padding: 1rem;
 
@@ -108,6 +109,63 @@
         /* background: white; */
         color: var(--lightgrey);
     }
+
+    
+
+    .form__btn-underline {
+        display: inline;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        color: var(--lighgrey);
+    
+        &:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            width: 0;
+            bottom: -5px;
+            background: white;
+            height: 4px;
+            transition: width 0.3s ease-out;
+          }
+          &:hover:after,
+          &:focus:after,
+          &:active:after {
+            left: 0;
+            right: auto;
+            width: 100%;
+            color: white;
+          }
+      }
+    }
+
+    .form-btn-delete{
+      background: rgba(255, 0, 0, 0.377);
+      font-size: xx-large;
+    color: var(--lightgrey);
+    border: none;
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+    margin-top: 3rem;
+    border: 1px solid var(--lightgrey);
+    padding: 1rem;
+
+    &:hover{
+      border: 1px solid white;
+      color: white;
+      cursor: pointer;
+      transition: .1s ease-in-out;
+      box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) ;
+    }
+    &:active{
+      transform: translateX(-50%) translateY(.1rem);
+        /* background: white; */
+        color: var(--lightgrey);
+    }
+
+    
 
     .form__btn-underline {
         display: inline;
@@ -142,5 +200,11 @@
     }
     .pass{
       left: 42%;
+    }
+    hr{
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
     }
     
