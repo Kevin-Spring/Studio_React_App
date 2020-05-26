@@ -63,6 +63,7 @@ class UserProfile extends Component {
         window.location.reload(false);
         firebase.auth().signOut();
     }
+    //Add user.reauthenticateWithCredential(credential) to access delete function for older log ins
     deleteAcc() {
         var user = firebase.auth().currentUser;
 
