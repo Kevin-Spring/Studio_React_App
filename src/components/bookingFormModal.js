@@ -11,7 +11,8 @@ const customStyles = {
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
+      transform             : 'translate(-50%, -50%)',
+      height: '100vh'
     }
   };
 
@@ -19,11 +20,19 @@ const customStyles = {
 
 export default class BookingFormModal extends Component {
 
+    state= {
+        name: "Name"
+    }
+
 
     handleConfirmation(e){
         e.preventDefault();
         this.props.callback(e.target.elements.time.value)
     }
+
+    handleOnChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
+      };
 
     //onSubmit={this.handleOnSubmit.bind(this)}
     //även tagit bort method="post" encType="text/plain" från form
@@ -75,7 +84,7 @@ export default class BookingFormModal extends Component {
                         <form onSubmit={this.handleConfirmation.bind(this)}>
                             <div className={"form__container"}>
                                 <div className={"form__group field"}>
-                                    <input type={"text"} className={"form__field"} placeholder={"Name"} name={"name"} id={'name'} required />
+                                    <input type={"text"} className={"form__field"} name={"name"} id={'name'} value={this.state.name} onChange={this.handleOnChange.bind(this)}required />
                                     <label htmlFor={"name"} className={"form__label"}>Name</label>
                                 </div>
                                 <div className={"form__group field"}>
