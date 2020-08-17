@@ -30,7 +30,9 @@ class UserLogin extends Component {
         ]
     };
 
-    componentWillUpdate() {
+
+    //Skapar bara error
+    /* componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
             this.setState({ user: user.email });
             user.updateProfile({
@@ -38,7 +40,7 @@ class UserLogin extends Component {
             });
             console.log(user);
         })
-    }
+    } */
 
     onClickRegister() {
         this.setState({ condition: false })
