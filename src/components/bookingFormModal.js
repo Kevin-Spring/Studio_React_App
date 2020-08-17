@@ -21,7 +21,8 @@ const customStyles = {
 export default class BookingFormModal extends Component {
 
     state= {
-        name: "Name"
+        name: "Name",
+        time: "Time"
     }
 
 
@@ -31,7 +32,8 @@ export default class BookingFormModal extends Component {
     }
 
     handleOnChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value,
+                        [e.target.time]: e.target.value });
       };
 
     //onSubmit={this.handleOnSubmit.bind(this)}
@@ -84,17 +86,16 @@ export default class BookingFormModal extends Component {
                         <form onSubmit={this.handleConfirmation.bind(this)}>
                             <div className={"form__container"}>
                                 <div className={"form__group field"}>
-                                    <input type={"text"} className={"form__field"} name={"name"} id={'name'} value={this.state.name} onChange={this.handleOnChange.bind(this)}required />
+                                    <input type={"text"} className={"form__field"} name={"name"} id={'name'} value={this.state.name} onChange={this.handleOnChange.bind(this)} required />
                                     <label htmlFor={"name"} className={"form__label"}>Name</label>
                                 </div>
                                 <div className={"form__group field"}>
-                                    <input type={"text"} className={"form__field"} name={"time"} id={"input__time"} placeholder={"Time"}
-                                        required />
+                                    <input type={"text"} className={"form__field"} name={"time"} id={"input__time"} placeholder={"Time"} value={this.state.time} onChange={this.handleOnChange.bind(this)} required />
                                     <label htmlFor={"input__time"} className={"form__label"}>What Time?</label>
                                 </div>
                                 <div className={"form__group field"}>
                                     <input type="number" className={"form__field"} name={"telephone"} id={"input__telephone"} placeholder={"Telephone"}
-                                         required />
+                                     required />
                                     <label htmlFor={"input__telephone"} className={"form__label"}>Telephone</label>
                                 </div>
                                 <div className={"form__group field"}>
