@@ -22,7 +22,9 @@ export default class BookingFormModal extends Component {
 
     state= {
         name: "Name",
-        time: "Time"
+        time: "Time",
+        telephone: "0000",
+        textarea: "Hello, ..."
     }
 
 
@@ -33,7 +35,10 @@ export default class BookingFormModal extends Component {
 
     handleOnChange = (e) => {
         this.setState({ [e.target.name]: e.target.value,
-                        [e.target.time]: e.target.value });
+                        [e.target.time]: e.target.value,
+                        [e.target.telephone]: e.target.value,
+                        [e.target.textarea]: e.target.value
+                     });
       };
 
     //onSubmit={this.handleOnSubmit.bind(this)}
@@ -95,12 +100,12 @@ export default class BookingFormModal extends Component {
                                 </div>
                                 <div className={"form__group field"}>
                                     <input type="number" className={"form__field"} name={"telephone"} id={"input__telephone"} placeholder={"Telephone"}
-                                     required />
+                                    value={this.state.telephone} onChange={this.handleOnChange.bind(this)} required />
                                     <label htmlFor={"input__telephone"} className={"form__label"}>Telephone</label>
                                 </div>
                                 <div className={"form__group field"}>
                                     <textarea name={"textarea"} className={"form__field"} id={"textarea"} cols={"30"} rows={"10"}
-                                        placeholder={"Other thoughts?"}></textarea>
+                                        placeholder={"Other thoughts?"} value={this.state.textarea} onChange={this.handleOnChange.bind(this)}></textarea>
                                     <label htmlFor={"textarea"} className={"form__label"}>Anything else?</label>
                                 </div>
                                 <div className={"btn-animation"}>
